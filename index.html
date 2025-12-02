@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Imposter (Clash Royale)</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, sans-serif;
+      background: #f4f4f8;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      color: #222;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 650px;
+      padding: 20px 12px 32px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0 0 8px;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    p.instructions {
+      margin: 0 0 18px;
+      text-align: center;
+      font-size: 15px;
+      color: #555;
+    }
+
+    /* ===== Controls ===== */
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      background: #fff;
+      padding: 14px;
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .controls label {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 4px;
+    }
+
+    .controls input {
+      width: 110px;
+      padding: 10px;
+      font-size: 17px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 999px;
+      background: #4f46e5;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      max-width: 300px;
+      width: 100%;
+      text-align: center;
+      transition: transform 0.12s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.96);
+    }
+
+    .error {
+      text-align: center;
+      color: #c53030;
+      min-height: 18px;
+      font-size: 14px;
+    }
+
+    /* ===== Cards ===== */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+      align-items: start;
+      flex-grow: 1;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      user-select: none;
+      overflow: hidden;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .status-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #777;
+      transition: color 0.15s;
+    }
+
+    /* ===== Word box ===== */
+
+    .word-box {
+      padding: 14px 10px;
+      border-radius: 12px;
+      border: 1px dashed #bbb;
+      text-align: center;
+      font-size: 19px;
+      font-weight: 700;
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+
+    .word-hidden { color: #777; }
+    .word-revealed { color: #111; opacity: 1; transform: scale(1); }
+
+    .word-locked {
+      color: #999;
+      font-style: italic;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ===== Category box ===== */
+
+    .category-box {
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: #eef2ff;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+
+    .category-shown {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== Button ===== */
+
+    .card-btn {
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: none;
+      background: #e5e7eb;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .card-btn:active {
+      transform: scale(0.96);
+    }
+
+    .card-btn.locked {
+      background: #ddd;
+      color: #999;
+      cursor: default;
+      transform: none;
+      opacity: 0.7;
+    }
+
+    /* ===== Status Section (Bottom) ===== */
+    
+    .status-section {
+      margin-top: 25px;
+      width: 100%;
+    }
+
+    .reveal-tracker {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #4f46e5;
+      min-height: 28px;
+      padding: 12px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .first-player {
+      text-align: center;
+      padding: 18px;
+      background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+      color: white;
+      border-radius: 16px;
+      font-size: 20px;
+      font-weight: 800;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+    }
+
+    .first-player.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <h1>Imposter (Clash Royale)</h1>
+  <p class="instructions">
+    You get a word + category. Imposters see the category, too.<br>
+    Cards can only be opened once.
+  </p>
+
+  <div class="controls">
+
+    <div style="display:flex;flex-direction:column;">
+      <label>Players</label>
+      <input id="playerCount" type="number" min="3" max="20">
+    </div>
+
+    <div style="display:flex;flex-direction:column;">
+      <label>Imposters</label>
+      <input id="imposterCount" type="number" min="1" max="10">
+    </div>
+
+    <button id="generateBtn" class="btn">Deal Cards</button>
+
+  </div>
+
+  <div id="error" class="error"></div>
+  
+  <div id="cardsContainer" class="cards"></div>
+  
+  <!-- Status section moved to bottom -->
+  <div class="status-section">
+    <div id="revealTracker" class="reveal-tracker"></div>
+    <div id="firstPlayer" class="first-player"></div>
+  </div>
+
+  <div class="footer-note">
+    Close your card before passing the device.
+  </div>
+    <div class="footer-note">
+    leoniscool.com
+  </div>
+
+</div>
+
+<script>
+/* ====== DATA ===== */
+
+const troops = ["Archers","Archer Queen","Baby Dragon","Balloon","Bandit","Barbarians","Bats","Battle Healer","Battle Ram",
+"Berserker","Bomber","Boss Bandit","Bowler","Bush Goblins","Cannon Cart","Cursed Hog","Dark Prince","Dart Goblin",
+"Electro Dragon","Electro Giant","Electro Spirit","Electro Wizard","Elite Barbarians","Elixir Blob","Elixir Golem",
+"Elixir Golemite","Executioner","Firecracker","Fire Spirit","Fisherman","Flying Machine","Furnace","Giant",
+"Giant Skeleton","Goblin Brawler","Goblin Gang","Goblin Demolisher","Goblin Giant","Goblin Machine","Goblins",
+"Goblinstein","Golden Knight","Golem","Golemite","Guardienne","Guards","Hog Rider","Hunter","Heal Spirit",
+"Ice Golem","Ice Spirit","Ice Wizard","Inferno Dragon","Knight","Lava Hound","Lava Pup","Little Prince","Lumberjack",
+"Magic Archer","Mega Knight","Mega Minion","Mighty Miner","Miner","Mini P.E.K.K.A.","Minion Horde","Minions",
+"Monk","Mother Witch","Monster","Musketeer","Night Witch","P.E.K.K.A.","Phoenix","Prince","Princess","Ram Rider",
+"Rascal Boy","Rascal Girl","Royal Ghost","Royal Giant","Royal Hogs","Royal Recruits","Rune Giant","Skeleton Army",
+"Skeleton Barrel","Skeleton Dragons","Skeleton King","Skeletons","Sparky","Spear Goblins","Spirit Empress",
+"Suspicious Bush","Three Musketeers","Valkyrie","Wall Breakers","Witch","Wizard","Zappies"];
+
+const buildings = ["Bomb Tower","Cannon","Inferno Tower","Mortar","Tesla","X-Bow","Barbarian Hut","Elixir Collector",
+"Goblin Cage","Goblin Drill","Goblin Hut","Tombstone"];
+
+const spells = ["Arrows","Barbarian Barrel","Earthquake","Fireball","Freeze","Giant Snowball","Goblin Curse","Lightning",
+"Poison","Rage","Rocket","Royal Delivery","The Log","Tornado","Vines","Void","Zap"];
+
+/* ===== UTIL ===== */
+
+function randomFrom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function getCategory(word) {
+  if (troops.includes(word)) return "Troop";
+  if (buildings.includes(word)) return "Building";
+  if (spells.includes(word)) return "Spell";
+  return "Unknown";
+}
+
+/* ===== ELEMENTS ===== */
+
+const cardsContainer = document.getElementById("cardsContainer");
+const generateBtn = document.getElementById("generateBtn");
+const playerCountInput = document.getElementById("playerCount");
+const imposterCountInput = document.getElementById("imposterCount");
+const errorBox = document.getElementById("error");
+const revealTracker = document.getElementById("revealTracker");
+const firstPlayerBox = document.getElementById("firstPlayer");
+
+/* ===== GAME STATE ===== */
+let totalCards = 0;
+let revealedCards = 0;
+let lockedCards = 0;
+let playerNumbers = [];
+
+/* ===== LOCAL STORAGE LOAD ===== */
+
+playerCountInput.value = localStorage.getItem("playerCount") || 3;
+imposterCountInput.value = localStorage.getItem("imposterCount") || 1;
+
+/* ===== UPDATE TRACKER ===== */
+
+function updateTracker() {
+  if (totalCards === 0) {
+    revealTracker.textContent = "";
+    return;
+  }
+  
+  revealTracker.textContent = `Revealed: ${revealedCards} / ${totalCards} cards`;
+  
+  if (lockedCards === totalCards && totalCards > 0) {
+    selectFirstPlayer();
+  }
+}
+
+/* ===== SELECT FIRST PLAYER ===== */
+
+function selectFirstPlayer() {
+  // Pick a random player number (not necessarily an imposter)
+  const randomPlayer = Math.floor(Math.random() * totalCards) + 1;
+  
+  // Animate the display
+  setTimeout(() => {
+    firstPlayerBox.textContent = `Player ${randomPlayer} goes first!`;
+    firstPlayerBox.classList.add('show');
+    
+    // Scroll to show the announcement
+    firstPlayerBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 500);
+}
+
+/* ===== MAIN ===== */
+
+function generateCards() {
+  // Reset state
+  revealedCards = 0;
+  lockedCards = 0;
+  playerNumbers = [];
+  firstPlayerBox.classList.remove('show');
+  firstPlayerBox.textContent = '';
+  
+  errorBox.textContent = "";
+
+  const playerCount = parseInt(playerCountInput.value, 10);
+  const imposterCount = parseInt(imposterCountInput.value, 10);
+
+  if (playerCount < 3) {
+    errorBox.textContent = "There must be at least 3 players.";
+    return;
+  }
+
+  if (imposterCount < 1) {
+    errorBox.textContent = "At least 1 imposter.";
+    return;
+  }
+
+  if (imposterCount >= playerCount) {
+    errorBox.textContent = "Imposters must be less than total players.";
+    return;
+  }
+
+  /* Save settings */
+  localStorage.setItem("playerCount", playerCount);
+  localStorage.setItem("imposterCount", imposterCount);
+
+  /* Select random word + category */
+  const groups = [troops, buildings, spells];
+  const chosenGroup = randomFrom(groups);
+  const secretWord = randomFrom(chosenGroup);
+  const secretCategory = getCategory(secretWord);
+
+  let words = Array(playerCount).fill(secretWord);
+
+  /* Assign imposters */
+  while (words.filter(w => w === "Imposter").length < imposterCount) {
+    const idx = Math.floor(Math.random() * playerCount);
+    words[idx] = "Imposter";
+  }
+
+  /* Shuffle */
+  for (let i = words.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [words[i], words[j]] = [words[j], words[i]];
+  }
+
+  cardsContainer.innerHTML = "";
+  totalCards = playerCount;
+  updateTracker();
+
+  /* Build cards */
+  words.forEach((word, i) => {
+    const playerNumber = i + 1;
+    playerNumbers.push(playerNumber);
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <div class="card-header">
+        <span>Player ${playerNumber}</span>
+        <span class="status-label">Hidden</span>
+      </div>
+
+      <div class="word-box word-hidden"></div>
+      <div class="category-box"></div>
+
+      <button class="card-btn">Reveal</button>
+    `;
+
+    const wordBox = card.querySelector(".word-box");
+    const categoryBox = card.querySelector(".category-box");
+    const btn = card.querySelector(".card-btn");
+    const statusLabel = card.querySelector(".status-label");
+
+    let viewed = false;
+    let revealed = false;
+
+    btn.addEventListener("click", () => {
+      if (viewed) return;
+
+      /* Reveal */
+      if (btn.textContent === "Reveal") {
+        wordBox.textContent = word === "Imposter" ? "Imposter" : word;
+        wordBox.classList.add("word-revealed");
+
+        categoryBox.textContent = "Category: " + secretCategory;
+        categoryBox.classList.add("category-shown");
+
+        btn.textContent = "Close";
+        statusLabel.textContent = "Revealed";
+        
+        // Track reveal
+        if (!revealed) {
+          revealed = true;
+          revealedCards++;
+          updateTracker();
+        }
+        return;
+      }
+
+      /* Close + lock */
+      if (btn.textContent === "Close") {
+        viewed = true;
+
+        wordBox.classList.remove("word-revealed");
+        categoryBox.classList.remove("category-shown");
+
+        setTimeout(() => {
+          wordBox.textContent = "Locked";
+          wordBox.className = "word-box word-locked";
+
+          btn.textContent = "Locked";
+          btn.classList.add("locked");
+          btn.disabled = true;
+          statusLabel.textContent = "Locked";
+          
+          // Track lock
+          lockedCards++;
+          updateTracker();
+        }, 250);
+      }
+    });
+
+    cardsContainer.appendChild(card);
+  });
+}
+
+generateBtn.addEventListener("click", generateCards);
+</script>
+
+</body>
+</html>
