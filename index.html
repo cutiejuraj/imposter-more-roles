@@ -881,18 +881,40 @@ const defaultSubjects = {
     ]
   },
 
-  "Calculus": [
-    "Limit","Continuity","One-Sided Limit","Infinite Limit","Limit Laws","Indeterminate Form",
-    "Removable Discontinuity","Jump Discontinuity","Vertical Asymptote","Horizontal Asymptote",
-    "Derivative","Differentiability","Tangent Line","Instantaneous Rate","Power Rule","Sum Rule","Difference Rule",
-    "Implicit Differentiation","Higher Derivative","Second Derivative","Third Derivative","Inverse Function",
-    "Logarithmic Differentiation","Exponential Derivative","Trig Derivative","Critical Point","Local Maximum",
-    "Local Minimum","First Derivative Test","Second Derivative Test","Inflection Point","Concave Up","Concave Down",
-    "Optimization","Related Rates","Velocity Function","Acceleration Function","Motion on a Line",
-    "Antiderivative","Definite Integral","Indefinite Integral","Constant of Integration","Net Change",
-    "Differential Equation","Separation of Variables","Initial Condition","Area Under Curve","Riemann Sum",
-    "Trapezoidal Rule","Fundamental Theorem","Mean Value Theorem","Average Value","Rate of Change","Accumulation Function"
-  ],
+  "Calculus": {
+    limits: [
+      "Limit","Continuity","One-Sided Limit","Infinite Limit","Limit Laws","Indeterminate Form",
+      "Removable Discontinuity","Jump Discontinuity","Vertical Asymptote","Horizontal Asymptote",
+      "Squeeze Theorem","L'Hôpital's Rule"
+    ],
+
+    derivatives: [
+      "Derivative","Differentiability","Tangent Line","Instantaneous Rate","Power Rule","Sum Rule","Difference Rule",
+      "Product Rule","Quotient Rule","Chain Rule","Implicit Differentiation","Higher Derivative","Second Derivative",
+      "Third Derivative","Inverse Function","Logarithmic Differentiation","Exponential Derivative","Trig Derivative"
+    ],
+
+    applicationsOfDerivatives: [
+      "Critical Point","Local Maximum","Local Minimum","First Derivative Test","Second Derivative Test",
+      "Inflection Point","Concave Up","Concave Down","Optimization","Related Rates",
+      "Velocity Function","Acceleration Function","Motion on a Line","Mean Value Theorem"
+    ],
+
+    integrals: [
+      "Antiderivative","Indefinite Integral","Definite Integral","Constant of Integration","Net Change",
+      "Area Under Curve","Riemann Sum","Trapezoidal Rule","Accumulation Function","Average Value",
+      "U-Substitution"
+    ],
+
+    applicationsOfIntegrals: [
+      "Differential Equation","Separation of Variables","Initial Condition","Rate of Change",
+      "Motion with Acceleration","Distance and Displacement","Growth and Decay"
+    ],
+
+    theorems: [
+      "Fundamental Theorem of Calculus","Mean Value Theorem","Rolle’s Theorem"
+    ]
+  },
   
   "Computer Science": {
     programmingBasics: [
@@ -962,11 +984,168 @@ const defaultSubjects = {
     winter: ["Skiing","Snowboarding","Ice Hockey","Figure Skating","Bobsleigh","Curling","Biathlon","Luge","Speed Skating","Freestyle Skiing"],
     combat: ["Boxing","Wrestling","Martial Arts","Fencing","Judo","Taekwondo","Karate","MMA","Kendo","Sumo"],
     individual: ["Gymnastics","Athletics","Cycling","Archery","Weightlifting","Triathlon","Equestrian","Shooting","Badminton","Table Tennis"]
-  }
+  },
+  
+   "Names": {
+    name: ["Leon","Matteo","Illay","Carver","Ethan","Naoki","Thomas","Sean","Luke"]
+  },
+  
+  "Minecraft": {
+  
+  mobs: [
+    "Villager","Cow","Pig","Chicken","Sheep","Wolf","Horse","Cat","Fox","Bee","Rabbit","Parrot","Llama",
+    "Zombie","Skeleton","Creeper","Spider","Enderman","Slime","Witch","Phantom","Pillager","Blaze","Ghast",
+    "Piglin","Hoglin","Guardian","Evoker","Vex","Warden","Ender Dragon","Wither"
+  ],
+
+  blocks: [
+    "Stone","Dirt","Sand","Gravel","Wood","Leaves","Glass","Obsidian","Clay","Bricks","Netherrack","End Stone",
+    "Basalt","Deepslate","Bedrock"
+  ],
+
+  resources: [
+    "Coal","Iron","Gold","Diamond","Emerald","Redstone","Lapis","Copper","Nether Quartz","Ancient Debris"
+  ],
+
+  items: [
+    "Sword","Axe","Pickaxe","Shovel","Bow","Shield","Trident","Fishing Rod","Compass","Clock","Shears","Map"
+  ],
+
+  food: [
+    "Bread","Steak","Cooked Porkchop","Cooked Chicken","Baked Potato","Carrot","Apple","Melon","Chorus Fruit",
+    "Golden Apple","Pumpkin Pie","Honey Bottle"
+  ],
+
+  structures: [
+    "Village","Temple","Stronghold","Mineshaft","Ocean Monument","Ruined Portal","Nether Fortress","Bastion",
+    "End City","Ancient City"
+  ],
+
+  biomes: [
+    "Plains","Forest","Taiga","Jungle","Desert","Savanna","Swamp","Mountains","Snowy Biome","Ocean","Badlands",
+    "Mushroom Biome","Nether","End"
+  ],
+
+  toolsAndGear: [
+    "Pickaxe","Sword","Axe","Hoe","Shovel","Armor","Helmet","Chestplate","Leggings","Boots","Shield","Crossbow"
+  ],
+
+  magicAndPotions: [
+    "Enchanting Table","Potion of Healing","Potion of Strength","Potion of Swiftness","Potion of Fire Resistance",
+    "Potion of Regeneration","Potion of Invisibility","Potion of Slow Falling"
+  ]
+},
+
+"Objects": {
+  objects: [
+    "Chair","Table","Sofa","Bed","Lamp","Mirror","Clock","Pillow","Blanket",
+    "Curtain","Candle","TV","Remote","Shelf","Plate","Cup","Fork","Knife",
+    "Spoon","Pan","Pot","Bottle","Microwave","Fridge","Toaster","Phone",
+    "Laptop","Tablet","Headphones","Charger","Mouse","Keyboard","Camera",
+    "Smartwatch","Speaker","Notebook","Pencil","Pen","Eraser","Ruler",
+    "Backpack","Calculator","Binder","Shirt","Pants","Jacket","Hat","Socks",
+    "Shoes","Gloves","Belt","Hammer","Screwdriver","Wrench","Pliers","Drill",
+    "Saw","Tape Measure","Car","Bike","Bus","Train","Scooter","Motorcycle",
+    "Airplane","Boat","Wallet","Keys","Water Bottle","Backpack","Trash Can",
+    "Umbrella","Broom","Mop","Vacuum","Toothbrush","Toothpaste","Soap",
+    "Shampoo","Comb","Hairdryer","Sunglasses","Watch","Notebook","Stapler",
+    "Paperclip","Highlighter","Glue","Scissors"
+  ]
+},
+
+"Environmental Science": {
+
+  ecology: [
+    "Ecosystem","Biome","Habitat","Niche","Biodiversity","Species Richness","Species Evenness","Keystone Species",
+    "Indicator Species","Invasive Species","Native Species","Endangered Species","Extinction","Speciation",
+    
+    "Population Growth","Carrying Capacity","Limiting Factor","Density-Dependent Factor","Density-Independent Factor",
+    "r-Selected Species","K-Selected Species","Survivorship Curve","Population Dynamics","Growth Rate","Logistic Growth",
+    
+    "Producer","Consumer","Herbivore","Carnivore","Omnivore","Detritivore","Decomposer","Trophic Level","Food Web",
+    "Primary Productivity","Gross Primary Productivity","Net Primary Productivity"
+  ],
+
+  cycles: [
+    "Biogeochemical Cycle","Water Cycle","Carbon Cycle","Nitrogen Cycle","Phosphorus Cycle","Sulfur Cycle",
+    "Evaporation","Condensation","Precipitation","Transpiration","Nitrogen Fixation","Assimilation","Respiration"
+  ],
+
+  atmosphereClimate: [
+    "Climate","Weather","Albedo","Greenhouse Effect","Global Warming","Climate Change","Deforestation",
+    "Desertification","Ocean Acidification","Glacier Retreat","Sea Level Rise","Carbon Sequestration",
+    
+    "Atmosphere","Troposphere","Stratosphere","Ozone Layer","Greenhouse Gas","CO2","Methane","Nitrous Oxide"
+  ],
+
+  earthSystems: [
+    "Soil","Soil Formation","Soil Horizon","Erosion","Deposition","Humus","Sand","Silt","Clay","Soil Texture",
+    
+    "Plate Tectonics","Convergent Boundary","Divergent Boundary","Transform Boundary","Earthquake","Volcano","Subduction",
+    
+    "Tragedy of the Commons","Maximum Sustainable Yield","Resource Management","Sustainability","Ecological Footprint",
+    "Conservation","Preservation","Restoration","Recycling","Composting"
+  ],
+
+  humanImpact: [
+    "Air Pollution","Water Pollution","Noise Pollution","Light Pollution","Smog","Acid Rain","Eutrophication",
+    "Biomagnification","Bioaccumulation","Turbidity","pH","Dissolved Oxygen",
+    
+    "Agriculture","Industrial Agriculture","Monoculture","Crop Rotation","Irrigation","Soil Degradation",
+    "Pesticide","Fertilizer","Herbicide","Pesticide Resistance","Integrated Pest Management",
+    
+    "Mining","Overfishing","Bycatch","Habitat Fragmentation","Edge Effect","Urban Sprawl",
+    
+    "Fossil Fuel","Renewable Energy"
+  ]
+},
+
+"Brawl Stars": {
+
+  brawlers: [
+    "Shelly","Colt","Brock","Jessie","Nita","Bull","Dynamike","Bo","El Primo","Barley",
+    "Poco","Rico","Darryl","Penny","Pam","Frank","Mortis","Tara","Gene","Spike",
+    "Crow","Leon","Sandy","Max","Mr. P","Sprout","Surge","Colette","Lou","Colonel Ruffs",
+    "Belle","Buzz","Griff","Ash","Meg","Fang","Grom","Bonnie","Otis","Sam","Buster",
+    "Chester","Mandy","R-T","Maisie","Hank","Cordelius","Larry & Lawrie","Draco","Spike Libre"
+  ],
+},
+
+"AP Classes": {
+  class: [
+    "AP Calculus AB",
+    "AP Calculus BC",
+    "AP Statistics",
+    "AP Computer Science A",
+    "AP Computer Science Principles",
+    "AP Biology",
+    "AP Chemistry",
+    "AP Physics 1",
+    "AP Physics 2",
+    "AP Physics C Mechanics",
+    "AP Physics C Electricity & Magnetism",
+    "AP Environmental Science",
+    "AP Human Geography",
+    "AP Psychology",
+    "AP World History",
+    "AP U.S. History",
+    "AP European History",
+    "AP Government & Politics",
+    "AP Macroeconomics",
+    "AP Microeconomics",
+    "AP Spanish",
+    "AP French",
+    "AP Chinese",
+    "AP Latin",
+    "AP English Language",
+    "AP English Literature",
+    "AP Art History",
+    "AP Music Theory",
+    "AP Studio Art"
+  ],
+}
+
 };
-
-
-
 
 /* ===== LOCAL STORAGE LOAD ===== */
 playerCountInput.value = localStorage.getItem("playerCount") || 3;
@@ -979,7 +1158,10 @@ customItems = JSON.parse(localStorage.getItem("customItems")) || [];
 function initializeSubjectOptions() {
   subjectOptions.innerHTML = "";
   
-  Object.keys(defaultSubjects).forEach(subject => {
+  // Get all subject names and sort them alphabetically
+  const sortedSubjectNames = Object.keys(defaultSubjects).sort();
+  
+  sortedSubjectNames.forEach(subject => {
     const option = document.createElement("div");
     option.className = "subject-option";
     option.textContent = subject;
@@ -1289,4 +1471,3 @@ if (currentSubject) {
 </script>
 </body>
 </html>
-
