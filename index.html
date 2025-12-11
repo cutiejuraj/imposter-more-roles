@@ -970,36 +970,50 @@
       transform: none;
     }
 
+    /* ===== Roles Reveal Box - Updated to match page style ===== */
     .roles-reveal-box {
       text-align: center;
-      padding: 20px 16px;
-      background: linear-gradient(135deg, #10b981, #34d399);
-      color: white;
-      border-radius: 18px;
-      font-size: clamp(16px, 4vw, 20px);
-      font-weight: 700;
+      padding: 0;
+      background: #fff;
+      color: #222;
+      border-radius: 16px;
+      font-size: clamp(16px, 4vw, 18px);
+      font-weight: 600;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.5s, transform 0.5s;
-      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       width: 100%;
       line-height: 1.4;
       margin-bottom: 16px;
       max-height: 0;
       overflow: hidden;
+      border: 2px solid #4f46e5;
     }
 
     .roles-reveal-box.show {
       opacity: 1;
       transform: translateY(0);
-      max-height: 500px;
+      max-height: 600px;
       transition: opacity 0.5s, transform 0.5s, max-height 0.5s;
     }
 
-    .roles-reveal-box h3 {
-      margin: 0 0 16px;
+    .roles-reveal-header {
+      padding: 20px 16px;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: white;
+      border-radius: 14px 14px 0 0;
+      margin: 0;
+    }
+
+    .roles-reveal-header h3 {
+      margin: 0;
       font-size: clamp(18px, 4vw, 22px);
       font-weight: 800;
+    }
+
+    .roles-reveal-content {
+      padding: 20px;
     }
 
     .role-list {
@@ -1010,46 +1024,81 @@
     }
 
     .role-list li {
-      margin-bottom: 10px;
-      padding: 10px 14px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 10px;
+      margin-bottom: 12px;
+      padding: 14px 16px;
+      background: #f9fafb;
+      border-radius: 12px;
       font-size: 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-left: 4px solid #4f46e5;
+    }
+
+    .role-list li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .role-list .player-number {
       font-weight: 800;
       margin-right: 10px;
+      color: #4f46e5;
+      font-size: 16px;
+      min-width: 80px;
     }
 
     .role-list .role-name {
       font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 12px;
+      border-radius: 8px;
+      background: #eef2ff;
+      color: #4f46e5;
+      font-size: 14px;
+      flex: 1;
+      text-align: center;
     }
 
     .role-list .civilian-role {
-      background: rgba(59, 130, 246, 0.3);
+      background: #e0e7ff;
+      color: #3b82f6;
+      border-left-color: #3b82f6;
     }
 
     .role-list .imposter-role {
-      background: rgba(220, 38, 38, 0.3);
+      background: #fee2e2;
+      color: #dc2626;
+      border-left-color: #dc2626;
     }
 
     .role-list .detective-role {
-      background: rgba(16, 185, 129, 0.3);
+      background: #d1fae5;
+      color: #10b981;
+      border-left-color: #10b981;
     }
 
     .role-list .jester-role {
-      background: rgba(245, 158, 11, 0.3);
+      background: #fef3c7;
+      color: #f59e0b;
+      border-left-color: #f59e0b;
     }
 
     .role-list .assassin-role {
-      background: rgba(139, 92, 246, 0.3);
+      background: #f5f3ff;
+      color: #8b5cf6;
+      border-left-color: #8b5cf6;
+    }
+
+    .assassin-target {
+      font-size: 12px;
+      color: #8b5cf6;
+      font-weight: 600;
+      margin-top: 4px;
+      background: rgba(139, 92, 246, 0.1);
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-block;
     }
 
     .footer-note {
@@ -1106,11 +1155,22 @@
       .role-list li {
         flex-direction: column;
         align-items: flex-start;
-        gap: 4px;
+        gap: 8px;
       }
       
       .role-list .player-number {
         margin-right: 0;
+        min-width: auto;
+        width: 100%;
+      }
+      
+      .role-list .role-name {
+        width: 100%;
+        text-align: left;
+      }
+      
+      .roles-reveal-content {
+        padding: 16px;
       }
     }
 
@@ -1128,6 +1188,10 @@
       
       .status-label {
         align-self: flex-end;
+      }
+      
+      .role-list li {
+        padding: 12px;
       }
     }
 
@@ -1181,6 +1245,11 @@
       .category-box {
         min-height: 36px;
         padding: 6px 8px;
+      }
+      
+      .roles-reveal-box {
+        max-height: 400px;
+        overflow-y: auto;
       }
     }
   </style>
@@ -2100,42 +2169,57 @@ function selectFirstPlayer() {
 /* ===== REVEAL ALL ROLES ===== */
 function revealAllRoles() {
   const roleList = document.createElement('div');
-  roleList.innerHTML = `
-    <h3>All Roles Revealed</h3>
-    <ul class="role-list">
-      ${words.map((word, i) => {
-        const playerNumber = i + 1;
-        let roleName = word;
-        let roleClass = '';
-        
-        if (word === secretItem) {
-          roleName = "Civilian";
-          roleClass = "civilian-role";
-        } else if (word === "Imposter") {
-          roleClass = "imposter-role";
-        } else if (word === "Detective") {
-          roleClass = "detective-role";
-        } else if (word === "Jester") {
-          roleClass = "jester-role";
-        } else if (word === "Assassin") {
-          roleClass = "assassin-role";
-        }
-        
-        // Special display for assassin with target
-        let displayText = roleName;
-        if (word === "Assassin" && assassinTarget) {
-          displayText = `Assassin (Target: Player ${assassinTarget})`;
-        }
-        
-        return `
-          <li>
-            <span class="player-number">Player ${playerNumber}:</span>
-            <span class="role-name ${roleClass}">${displayText}</span>
-          </li>
-        `;
-      }).join('')}
-    </ul>
-  `;
+  roleList.className = 'roles-reveal-content';
+  
+  const header = document.createElement('div');
+  header.className = 'roles-reveal-header';
+  header.innerHTML = '<h3>All Roles Revealed</h3>';
+  
+  const listContainer = document.createElement('ul');
+  listContainer.className = 'role-list';
+  
+  words.forEach((word, i) => {
+    const playerNumber = i + 1;
+    let roleName = "";
+    let roleClass = "";
+    let specialNote = "";
+    
+    if (word === secretItem) {
+      roleName = "Civilian";
+      roleClass = "civilian-role";
+    } else if (word === "Imposter") {
+      roleName = "Imposter";
+      roleClass = "imposter-role";
+    } else if (word === "Detective") {
+      roleName = "Detective";
+      roleClass = "detective-role";
+    } else if (word === "Jester") {
+      roleName = "Jester";
+      roleClass = "jester-role";
+    } else if (word === "Assassin") {
+      roleName = "Assassin";
+      roleClass = "assassin-role";
+      if (assassinTarget) {
+        specialNote = `<div class="assassin-target">Target: Player ${assassinTarget}</div>`;
+      }
+    }
+    
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <span class="player-number">Player ${playerNumber}</span>
+        <div style="flex: 1; display: flex; flex-direction: column; align-items: flex-end;">
+          <span class="role-name ${roleClass}">${roleName}</span>
+          ${specialNote}
+        </div>
+      </div>
+    `;
+    
+    listContainer.appendChild(li);
+  });
+  
+  roleList.appendChild(header);
+  roleList.appendChild(listContainer);
   
   rolesRevealBox.innerHTML = '';
   rolesRevealBox.appendChild(roleList);
@@ -2272,16 +2356,23 @@ function generateCards() {
         assassinIndex = idx;
         
         // Choose a target for the assassin (not themselves, not an imposter)
-        let targetAssigned = false;
-        while (!targetAssigned) {
-          const targetIdx = Math.floor(Math.random() * playerCount);
-          if (targetIdx !== idx && words[targetIdx] !== "Imposter") {
-            assassinTarget = targetIdx + 1; // Store as player number (1-based)
-            targetAssigned = true;
+        // Create list of possible targets
+        const possibleTargets = [];
+        for (let i = 0; i < playerCount; i++) {
+          if (i !== idx && words[i] !== "Imposter") {
+            possibleTargets.push(i);
           }
         }
         
-        assigned = true;
+        // Check if there are any valid targets
+        if (possibleTargets.length > 0) {
+          const targetIdx = possibleTargets[Math.floor(Math.random() * possibleTargets.length)];
+          assassinTarget = targetIdx + 1; // Store as player number (1-based)
+          assigned = true;
+        } else {
+          // If no valid targets, try a different assassin
+          words[idx] = "Civilian"; // Reset and try again
+        }
       }
     }
   }
@@ -2293,10 +2384,61 @@ function generateCards() {
     }
   }
 
-  // Shuffle
-  for (let i = words.length - 1; i > 0; i--) {
+  // Track which player is which role before shuffling
+  const rolesBeforeShuffle = [...words];
+  
+  // Create a mapping of original positions to shuffled positions
+  const indices = Array.from({length: playerCount}, (_, i) => i);
+  
+  // Shuffle indices
+  for (let i = indices.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [words[i], words[j]] = [words[j], words[i]];
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  
+  // Apply the same shuffle to words
+  const shuffledWords = indices.map(i => words[i]);
+  words = shuffledWords;
+  
+  // Now we need to update the assassin's target based on the shuffle
+  if (assassinToggle.checked && assassinIndex !== null && assassinTarget !== null) {
+    // Find where the assassin ended up after shuffle
+    let newAssassinIndex = null;
+    for (let i = 0; i < indices.length; i++) {
+      if (indices[i] === assassinIndex) {
+        newAssassinIndex = i;
+        break;
+      }
+    }
+    
+    // Find where the target ended up after shuffle
+    let newTargetIndex = null;
+    const originalTargetIndex = assassinTarget - 1; // Convert from player number to index
+    for (let i = 0; i < indices.length; i++) {
+      if (indices[i] === originalTargetIndex) {
+        newTargetIndex = i;
+        break;
+      }
+    }
+    
+    // If the assassin somehow ended up as their own target (shouldn't happen with proper shuffle),
+    // we need to fix it by swapping with another non-imposter
+    if (newAssassinIndex !== null && newTargetIndex !== null && newAssassinIndex === newTargetIndex) {
+      // Find another non-imposter to swap with
+      for (let i = 0; i < words.length; i++) {
+        if (i !== newAssassinIndex && words[i] !== "Imposter" && words[i] !== "Detective" && words[i] !== "Jester" && words[i] !== "Assassin") {
+          // Swap the assassin's position with this player
+          [words[newAssassinIndex], words[i]] = [words[i], words[newAssassinIndex]];
+          
+          // Update the target to the player we swapped with
+          assassinTarget = i + 1;
+          break;
+        }
+      }
+    } else if (newTargetIndex !== null) {
+      // Update the assassin target to the new position
+      assassinTarget = newTargetIndex + 1;
+    }
   }
 
   cardsContainer.innerHTML = "";
@@ -2379,28 +2521,45 @@ function generateCards() {
 
         // Detective ability: show random player peek hint in separate box
         if (word === "Detective") {
-          let otherPlayer = Math.floor(Math.random() * playerCount);
-          while (otherPlayer === i) {
-            otherPlayer = Math.floor(Math.random() * playerCount);
+          // Create list of possible players to peek at (everyone except self)
+          const possiblePlayers = [];
+          for (let j = 0; j < playerCount; j++) {
+            if (j !== i) {
+              possiblePlayers.push(j);
+            }
           }
-
-          const otherWord = words[otherPlayer];
-          const otherRole = otherWord === "Imposter" ? "Imposter" : 
-                           otherWord === "Detective" ? "Detective" : 
-                           otherWord === "Jester" ? "Jester" : 
-                           otherWord === "Assassin" ? "Assassin" : 
-                           "Non-Imposter";
-
-          specialHint = document.createElement("div");
-          specialHint.className = "detective-hint";
-          specialHint.innerHTML = `<strong>You peeked at Player ${otherPlayer + 1}:</strong><br>Their role: ${otherRole}`;
-
-          card.appendChild(specialHint);
           
-          // Show the hint with animation
-          setTimeout(() => {
-            specialHint.classList.add('show');
-          }, 10);
+          // If there are any other players, peek at one
+          if (possiblePlayers.length > 0) {
+            const otherPlayer = possiblePlayers[Math.floor(Math.random() * possiblePlayers.length)];
+            const otherWord = words[otherPlayer];
+            const otherRole = otherWord === "Imposter" ? "Imposter" : 
+                             otherWord === "Detective" ? "Detective" : 
+                             otherWord === "Jester" ? "Jester" : 
+                             otherWord === "Assassin" ? "Assassin" : 
+                             "Non-Imposter";
+
+            specialHint = document.createElement("div");
+            specialHint.className = "detective-hint";
+            specialHint.innerHTML = `<strong>You peeked at Player ${otherPlayer + 1}:</strong><br>Their role: ${otherRole}`;
+
+            card.appendChild(specialHint);
+            
+            // Show the hint with animation
+            setTimeout(() => {
+              specialHint.classList.add('show');
+            }, 10);
+          } else {
+            // Edge case: only one player
+            specialHint = document.createElement("div");
+            specialHint.className = "detective-hint";
+            specialHint.innerHTML = `<strong>No other players to peek at!</strong>`;
+            card.appendChild(specialHint);
+            
+            setTimeout(() => {
+              specialHint.classList.add('show');
+            }, 10);
+          }
         }
 
         // Assassin ability: show target player
