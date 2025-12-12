@@ -249,6 +249,10 @@
       border-left-color: #8b5cf6;
     }
 
+    .role-card.pregnant {
+      border-left-color: #ec4899;
+    }
+
     .role-card h4 {
       margin: 0 0 12px;
       font-size: 18px;
@@ -289,6 +293,10 @@
 
     .assassin .role-icon {
       background: #8b5cf6;
+    }
+
+    .pregnant .role-icon {
+      background: #ec4899;
     }
 
     .role-card p {
@@ -517,24 +525,6 @@
       gap: 8px;
     }
 
-    .randomize-names-btn {
-      padding: 8px 16px;
-      border: none;
-      border-radius: 999px;
-      background: #e0e7ff;
-      color: #4f46e5;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-
-    .randomize-names-btn:hover {
-      background: #c7d2fe;
-      transform: translateY(-1px);
-    }
-
     .reset-names-btn {
       padding: 8px 16px;
       border: none;
@@ -571,6 +561,7 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
+      position: relative;
     }
 
     .player-name-label {
@@ -593,6 +584,81 @@
     .player-name-input:focus {
       outline: none;
       border-color: #4f46e5;
+    }
+
+    /* Add/Remove player controls at bottom */
+    .player-count-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 16px;
+      background: #f9fafb;
+      border-radius: 12px;
+      border: 2px solid #e5e7eb;
+      width: 100%;
+    }
+
+    .player-count-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #4b5563;
+      text-align: center;
+    }
+
+    .count-buttons {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .count-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: #e0e7ff;
+      color: #4f46e5;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.2);
+    }
+
+    .count-btn:hover {
+      background: #c7d2fe;
+      transform: scale(1.1);
+      box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3);
+    }
+
+    .count-btn:active {
+      transform: scale(0.95);
+    }
+
+    .count-btn.remove {
+      background: #fee2e2;
+      color: #dc2626;
+      box-shadow: 0 2px 6px rgba(220, 38, 38, 0.2);
+    }
+
+    .count-btn.remove:hover {
+      background: #fecaca;
+      box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
+    }
+
+    .player-count {
+      font-size: 24px;
+      font-weight: 800;
+      color: #4f46e5;
+      min-width: 50px;
+      text-align: center;
     }
 
     /* ===== Controls ===== */
@@ -696,6 +762,10 @@
 
     .assassin-toggle input[type="checkbox"] {
       accent-color: #8b5cf6;
+    }
+
+    .pregnant-toggle input[type="checkbox"] {
+      accent-color: #ec4899;
     }
 
     @media (max-width: 480px) {
@@ -1011,6 +1081,15 @@
       line-height: 1.3;
     }
 
+    .pregnant-role {
+      color: #ec4899;
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 4px;
+      text-align: center;
+      line-height: 1.3;
+    }
+
     /* ===== Category box ===== */
     .category-box {
       padding: 10px 12px;
@@ -1072,7 +1151,8 @@
     /* ===== Detective/Assassin/Jester hint styling ===== */
     .detective-hint,
     .assassin-hint,
-    .jester-hint {
+    .jester-hint,
+    .pregnant-hint {
       font-size: 13px;
       font-weight: 600;
       margin-top: 6px;
@@ -1104,9 +1184,16 @@
       border-color: #fde68a;
     }
 
+    .pregnant-hint {
+      color: #ec4899;
+      background: #fdf2f8;
+      border-color: #fbcfe8;
+    }
+
     .detective-hint.show,
     .assassin-hint.show,
-    .jester-hint.show {
+    .jester-hint.show,
+    .pregnant-hint.show {
       opacity: 1;
       transform: translateY(0);
     }
@@ -1188,6 +1275,29 @@
       cursor: not-allowed;
       box-shadow: none;
       transform: none;
+    }
+
+    /* ===== Pregnant Announcement ===== */
+    .pregnant-announcement {
+      text-align: center;
+      padding: 20px 16px;
+      background: linear-gradient(135deg, #ec4899, #f472b6);
+      color: white;
+      border-radius: 18px;
+      font-size: clamp(16px, 4vw, 20px);
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+      box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+      width: 100%;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+
+    .pregnant-announcement.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ===== Roles Reveal Box - Updated to match page style ===== */
@@ -1310,12 +1420,29 @@
       border-left-color: #8b5cf6;
     }
 
+    .role-list .pregnant-role {
+      background: #fdf2f8;
+      color: #ec4899;
+      border-left-color: #ec4899;
+    }
+
     .assassin-target {
       font-size: 12px;
       color: #8b5cf6;
       font-weight: 600;
       margin-top: 4px;
       background: rgba(139, 92, 246, 0.1);
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+
+    .pregnant-badge {
+      font-size: 12px;
+      color: #ec4899;
+      font-weight: 600;
+      margin-top: 4px;
+      background: rgba(236, 72, 153, 0.1);
       padding: 4px 8px;
       border-radius: 6px;
       display: inline-block;
@@ -1428,6 +1555,17 @@
         max-width: 100%;
         min-width: 0;
       }
+      
+      .count-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 24px;
+      }
+      
+      .player-count {
+        font-size: 20px;
+        min-width: 40px;
+      }
     }
 
     /* Very small screen adjustments */
@@ -1452,6 +1590,21 @@
       
       .role-list li {
         padding: 12px;
+      }
+      
+      .count-buttons {
+        gap: 12px;
+      }
+      
+      .count-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+      }
+      
+      .player-count {
+        font-size: 18px;
+        min-width: 30px;
       }
     }
 
@@ -1545,7 +1698,7 @@
             <li><strong>Imposters:</strong> Some players are imposters - they DON'T know the secret word!</li>
             <li><strong>Discussion:</strong> Players discuss to figure out who the imposters are by saying a word related to the secret word they got</li>
             <li><strong>Voting:</strong> Vote to eliminate suspected imposters</li>
-            <li><strong>Winning:</strong> Civilians win if all imposters are eliminated. Imposters win if they survive. Jester wins if he/she gets voted out. Assassin wins if their target gets voted out.</li>
+            <li><strong>Winning:</strong> Civilians win if all imposters are eliminated. Imposters win if they survive. Jester wins if he/she gets voted out. Assassin wins if their target gets voted out. Pregnant gets 2 votes.</li>
           </ol>
         </div>
 		
@@ -1598,6 +1751,15 @@
               <div class="goal">Goal: Get your target player voted out</div>
             </div>
 
+            <div class="role-card pregnant">
+              <h4>
+                <span class="role-icon">P</span>
+                Pregnant
+              </h4>
+              <p>You get 2 votes! This role can stack with any other role. Everyone will know who has the pregnant role.</p>
+              <div class="goal">Goal: Use your extra vote wisely</div>
+            </div>
+
           </div>
         </div>
 
@@ -1606,9 +1768,10 @@
           <ol>
             <li><strong>Preparation:</strong> Host sets up the game with desired options</li>
             <li><strong>Card Distribution:</strong> Each player views their card ONCE on the device</li>
+            <li><strong>Pregnant Announcement:</strong> After all cards are viewed, the pregnant player is announced</li>
             <li><strong>Discussion:</strong> Players discuss - imposters must bluff convincingly</li>
             <li><strong>Questioning:</strong> Ask about the secret word to find inconsistencies</li>
-            <li><strong>Voting:</strong> Vote for who you think is an imposter</li>
+            <li><strong>Voting:</strong> Vote for who you think is an imposter (Pregnant player gets 2 votes)</li>
             <li><strong>Reveal:</strong> Eliminated player reveals their role</li>
             <li><strong>Repeat:</strong> Continue until either side wins</li>
           </ol>
@@ -1622,6 +1785,7 @@
             <li><strong>Detective:</strong> Use your peek information wisely - don't reveal it too early.</li>
             <li><strong>Jester:</strong> Act suspicious but not obviously fake. You want to be voted out, not ignored.</li>
             <li><strong>Assassin:</strong> Frame your target without being obvious. Work with imposters if possible.</li>
+            <li><strong>Pregnant:</strong> Use your extra vote strategically. You can sway the outcome!</li>
           </ul>
         </div>
 
@@ -1661,13 +1825,22 @@
     <div class="player-names-header">
       <h3>Players (Click to Edit)</h3>
       <div class="player-names-buttons">
-        <button class="randomize-names-btn" id="randomizeNamesBtn">Randomize</button>
         <button class="reset-names-btn" id="resetNamesBtn">Reset</button>
       </div>
     </div>
     
     <div class="player-names-list" id="playerNamesList">
       <!-- Player name inputs will be added here by JavaScript -->
+    </div>
+    
+    <!-- Add/Remove Player Controls at Bottom -->
+    <div class="player-count-controls">
+      <div class="player-count-label">Number of Players</div>
+      <div class="count-buttons">
+        <button class="count-btn remove" id="removePlayerBtn">−</button>
+        <div class="player-count" id="playerCountDisplay">3</div>
+        <button class="count-btn" id="addPlayerBtn">+</button>
+      </div>
     </div>
     
     <button class="toggle-player-names" id="hidePlayerNamesBtn">Hide Player Names</button>
@@ -1725,6 +1898,13 @@
       </label>
     </div>
 
+    <div class="role-toggle pregnant-toggle">
+      <label>
+        <input id="pregnantToggle" type="checkbox">
+        Pregnant
+      </label>
+    </div>
+
     <button id="generateBtn" class="btn" disabled>Deal Cards</button>
     
     <button class="toggle-player-names" id="showPlayerNamesBtn">Customize Player Names</button>
@@ -1737,6 +1917,7 @@
   <!-- Status section moved to bottom -->
   <div class="status-section">
     <div id="revealTracker" class="reveal-tracker"></div>
+    <div id="pregnantAnnouncement" class="pregnant-announcement"></div>
     <div id="firstPlayer" class="first-player"></div>
     <button id="revealRolesBtn" class="reveal-roles-btn" style="display: none;">Reveal All Roles</button>
     <div id="rolesRevealBox" class="roles-reveal-box"></div>
@@ -1765,6 +1946,7 @@ let secretItem = ""; // Store secret item globally for detective
 let secretCategory = ""; // Store secret category globally for detective
 let assassinTarget = null; // Store assassin's target
 let playerNames = []; // Store custom player names
+let pregnantPlayer = null; // Store which player is pregnant (index)
 
 /* ===== ELEMENTS ===== */
 const cardsContainer = document.getElementById("cardsContainer");
@@ -1782,6 +1964,7 @@ const selectedSubjectName = document.getElementById("selectedSubjectName");
 const changeSubjectBtn = document.getElementById("changeSubjectBtn");
 const customSubjectInput = document.getElementById("customSubjectInput");
 const customSubjectBtn = document.getElementById("customSubjectBtn");
+const pregnantAnnouncement = document.getElementById("pregnantAnnouncement");
 
 // Slider elements
 const playerSlider = document.getElementById("playerSlider");
@@ -1792,15 +1975,20 @@ const impostersValue = document.getElementById("impostersValue");
 // Player names elements
 const playerNamesSection = document.getElementById("playerNamesSection");
 const playerNamesList = document.getElementById("playerNamesList");
-const randomizeNamesBtn = document.getElementById("randomizeNamesBtn");
 const resetNamesBtn = document.getElementById("resetNamesBtn");
 const hidePlayerNamesBtn = document.getElementById("hidePlayerNamesBtn");
 const showPlayerNamesBtn = document.getElementById("showPlayerNamesBtn");
+
+// Add/Remove player elements
+const addPlayerBtn = document.getElementById("addPlayerBtn");
+const removePlayerBtn = document.getElementById("removePlayerBtn");
+const playerCountDisplay = document.getElementById("playerCountDisplay");
 
 // Role toggle elements
 const detectiveToggle = document.getElementById("detectiveToggle");
 const jesterToggle = document.getElementById("jesterToggle");
 const assassinToggle = document.getElementById("assassinToggle");
+const pregnantToggle = document.getElementById("pregnantToggle");
 
 // Modal elements
 const infoBtn = document.getElementById("infoBtn");
@@ -2294,6 +2482,7 @@ customItems = JSON.parse(localStorage.getItem("customItems")) || [];
 detectiveToggle.checked = JSON.parse(localStorage.getItem("detectiveEnabled")) || false;
 jesterToggle.checked = JSON.parse(localStorage.getItem("jesterEnabled")) || false;
 assassinToggle.checked = JSON.parse(localStorage.getItem("assassinEnabled")) || false;
+pregnantToggle.checked = JSON.parse(localStorage.getItem("pregnantEnabled")) || false;
 
 // Load player names from localStorage if they exist, otherwise use default
 const savedPlayerNames = JSON.parse(localStorage.getItem("playerNames"));
@@ -2457,6 +2646,8 @@ function changeSubject() {
   revealRolesBtn.style.display = 'none';
   rolesRevealBox.classList.remove('show');
   rolesRevealBox.innerHTML = '';
+  pregnantAnnouncement.classList.remove('show');
+  pregnantAnnouncement.textContent = '';
 }
 
 function enableGenerateButton() {
@@ -2482,6 +2673,9 @@ function updatePlayerNamesList() {
   
   // Save to localStorage
   localStorage.setItem("playerNames", JSON.stringify(playerNames));
+  
+  // Update player count display
+  playerCountDisplay.textContent = playerCount;
   
   // Create input for each player
   for (let i = 0; i < playerCount; i++) {
@@ -2512,47 +2706,6 @@ function updatePlayerNamesList() {
   }
 }
 
-function randomizePlayerNames() {
-  const namePool = [
-    "Alex", "Jordan", "Taylor", "Casey", "Riley", "Morgan", "Quinn", "Avery", "Blake", "Cameron",
-    "Dakota", "Drew", "Emerson", "Finley", "Harley", "Hayden", "Hunter", "Jamie", "Kai", "Logan",
-    "Marley", "Micah", "Parker", "Peyton", "Reese", "River", "Rowan", "Sage", "Skyler", "Spencer",
-    "Charlie", "Sam", "Ash", "Lee", "Jesse", "Robin", "Dylan", "Jordan", "Morgan", "Casey",
-    "Ariel", "Bailey", "Cameron", "Dakota", "Emerson", "Finley", "Harley", "Hayden", "Hunter", "Jamie",
-    "Kai", "Logan", "Marley", "Micah", "Parker", "Peyton", "Reese", "River", "Rowan", "Sage"
-  ];
-  
-  const playerCount = parseInt(playerSlider.value, 10);
-  const usedNames = new Set();
-  
-  // Reset playerNames array
-  playerNames = [];
-  
-  for (let i = 0; i < playerCount; i++) {
-    let name;
-    let attempts = 0;
-    
-    // Try to find a unique name
-    do {
-      name = namePool[Math.floor(Math.random() * namePool.length)];
-      attempts++;
-      
-      // If we've tried too many times, add a number to make it unique
-      if (attempts > 20) {
-        name = `${name} ${Math.floor(Math.random() * 100) + 1}`;
-        break;
-      }
-    } while (usedNames.has(name));
-    
-    usedNames.add(name);
-    playerNames.push(name);
-  }
-  
-  // Save to localStorage and update UI
-  localStorage.setItem("playerNames", JSON.stringify(playerNames));
-  updatePlayerNamesList();
-}
-
 function resetPlayerNames() {
   const playerCount = parseInt(playerSlider.value, 10);
   
@@ -2565,6 +2718,48 @@ function resetPlayerNames() {
   // Save to localStorage and update UI
   localStorage.setItem("playerNames", JSON.stringify(playerNames));
   updatePlayerNamesList();
+}
+
+function addPlayer() {
+  let playerCount = parseInt(playerSlider.value, 10);
+  if (playerCount < 20) {
+    playerCount++;
+    playerSlider.value = playerCount;
+    updateSliderDisplays();
+    
+    // Add new player name
+    playerNames.push(`Player ${playerCount}`);
+    localStorage.setItem("playerNames", JSON.stringify(playerNames));
+    
+    // Update the player names list if it's visible
+    if (playerNamesSection.style.display === 'block') {
+      updatePlayerNamesList();
+    }
+    
+    // Save to localStorage
+    localStorage.setItem("playerCount", playerCount);
+  }
+}
+
+function removePlayer() {
+  let playerCount = parseInt(playerSlider.value, 10);
+  if (playerCount > 3) {
+    playerCount--;
+    playerSlider.value = playerCount;
+    updateSliderDisplays();
+    
+    // Remove last player name
+    playerNames.pop();
+    localStorage.setItem("playerNames", JSON.stringify(playerNames));
+    
+    // Update the player names list if it's visible
+    if (playerNamesSection.style.display === 'block') {
+      updatePlayerNamesList();
+    }
+    
+    // Save to localStorage
+    localStorage.setItem("playerCount", playerCount);
+  }
 }
 
 function showPlayerNames() {
@@ -2588,7 +2783,25 @@ function updateTracker() {
   revealTracker.textContent = `Revealed: ${revealedCards} / ${totalCards} cards`;
   
   if (lockedCards === totalCards && totalCards > 0) {
-    selectFirstPlayer();
+    // Announce pregnant player after all cards are locked
+    announcePregnantPlayer();
+    // Then select first player
+    setTimeout(() => {
+      selectFirstPlayer();
+    }, 500);
+  }
+}
+
+/* ===== ANNOUNCE PREGNANT PLAYER ===== */
+function announcePregnantPlayer() {
+  if (pregnantToggle.checked && pregnantPlayer !== null) {
+    const playerName = playerNames[pregnantPlayer] || `Player ${pregnantPlayer + 1}`;
+    
+    setTimeout(() => {
+      pregnantAnnouncement.textContent = `${playerName} is Pregnant!\nThey get 2 votes!`;
+      pregnantAnnouncement.classList.add('show');
+      pregnantAnnouncement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 500);
   }
 }
 
@@ -2611,6 +2824,9 @@ function selectFirstPlayer() {
     }
     if (assassinToggle.checked) {
       roleNotes.push("Assassin");
+    }
+    if (pregnantToggle.checked) {
+      roleNotes.push("Pregnant");
     }
     
     if (roleNotes.length > 0) {
@@ -2643,6 +2859,7 @@ function revealAllRoles() {
     let roleName = "";
     let roleClass = "";
     let specialNote = "";
+    let isPregnant = (i === pregnantPlayer);
     
     if (word === secretItem) {
       roleName = "Civilian";
@@ -2665,13 +2882,22 @@ function revealAllRoles() {
       }
     }
     
+    if (isPregnant) {
+      if (roleClass) {
+        roleClass += " pregnant-role";
+      } else {
+        roleClass = "pregnant-role";
+      }
+    }
+    
     const li = document.createElement('li');
     li.innerHTML = `
       <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
         <span class="player-number">${playerName}</span>
         <div style="flex: 1; display: flex; flex-direction: column; align-items: flex-end;">
-          <span class="role-name ${roleClass}">${roleName}</span>
+          <span class="role-name ${roleClass}">${roleName}${isPregnant ? ' (Pregnant)' : ''}</span>
           ${specialNote}
+          ${isPregnant ? '<div class="pregnant-badge">Has 2 votes!</div>' : ''}
         </div>
       </div>
     `;
@@ -2710,7 +2936,10 @@ function generateCards() {
   revealRolesBtn.style.display = 'none';
   rolesRevealBox.classList.remove('show');
   rolesRevealBox.innerHTML = '';
+  pregnantAnnouncement.classList.remove('show');
+  pregnantAnnouncement.textContent = '';
   errorBox.textContent = "";
+  pregnantPlayer = null;
 
   const playerCount = parseInt(playerSlider.value, 10);
   const imposterCount = parseInt(imposterSlider.value, 10);
@@ -2736,6 +2965,8 @@ function generateCards() {
   if (detectiveToggle.checked) specialRolesCount++;
   if (jesterToggle.checked) specialRolesCount++;
   if (assassinToggle.checked) specialRolesCount++;
+  // Pregnant doesn't count against civilian slots since it stacks
+  const pregnantEnabled = pregnantToggle.checked;
   
   if (civilianSlots < specialRolesCount + 1) { // +1 for at least one regular civilian
     errorBox.textContent = `Need at least ${specialRolesCount + 1} non-imposters for special roles. Reduce imposters or players.`;
@@ -2838,6 +3069,12 @@ function generateCards() {
     }
   }
 
+  // Assign pregnant (optional) - can be any player, stacks with other roles
+  if (pregnantEnabled) {
+    // Pregnant can be assigned to any player (including imposters, detectives, etc.)
+    pregnantPlayer = Math.floor(Math.random() * playerCount);
+  }
+
   // Replace all non-imposter, non-detective, non-jester, non-assassin with the secret item
   for (let i = 0; i < words.length; i++) {
     if (words[i] === "Civilian") {
@@ -2861,7 +3098,7 @@ function generateCards() {
   const shuffledWords = indices.map(i => words[i]);
   words = shuffledWords;
   
-  // Now we need to update the assassin's target based on the shuffle
+  // Now we need to update the assassin's target and pregnant player based on the shuffle
   if (assassinToggle.checked && assassinIndex !== null && assassinTarget !== null) {
     // Find where the assassin ended up after shuffle
     let newAssassinIndex = null;
@@ -2901,6 +3138,18 @@ function generateCards() {
       assassinTarget = newTargetIndex + 1;
     }
   }
+  
+  // Update pregnant player position after shuffle
+  if (pregnantEnabled && pregnantPlayer !== null) {
+    let newPregnantIndex = null;
+    for (let i = 0; i < indices.length; i++) {
+      if (indices[i] === pregnantPlayer) {
+        newPregnantIndex = i;
+        break;
+      }
+    }
+    pregnantPlayer = newPregnantIndex;
+  }
 
   cardsContainer.innerHTML = "";
   totalCards = playerCount;
@@ -2934,7 +3183,7 @@ function generateCards() {
 
     let viewed = false;
     let revealed = false;
-    let specialHint = null; // Store reference to detective, assassin, or jester hint
+    let specialHint = null; // Store reference to role hint
 
     btn.addEventListener("click", () => {
       if (viewed) return;
@@ -2975,14 +3224,25 @@ function generateCards() {
           wordBox.textContent = word; // This is the secret item
         }
         
+        // Add Pregnant text if this player is pregnant
+        if (pregnantPlayer === i) {
+          const pregnantText = document.createElement("div");
+          pregnantText.className = "pregnant-role";
+          pregnantText.textContent = "Pregnant";
+          wordBox.appendChild(pregnantText);
+        }
+        
         wordBox.classList.add("word-revealed");
 
         // Everyone sees the category
         categoryBox.textContent = "Category: " + secretCategory;
         categoryBox.classList.add("category-shown");
 
-        // Detective ability: show random player peek hint in separate box
+        // Show mission hint based on role
+        specialHint = document.createElement("div");
+        
         if (word === "Detective") {
+          // Detective ability: show random player peek hint
           // Create list of possible players to peek at (everyone except self)
           const possiblePlayers = [];
           for (let j = 0; j < playerCount; j++) {
@@ -3002,50 +3262,38 @@ function generateCards() {
                              "Non-Imposter";
             const otherPlayerName = playerNames[otherPlayer] || `Player ${otherPlayer + 1}`;
 
-            specialHint = document.createElement("div");
             specialHint.className = "detective-hint";
-            specialHint.innerHTML = `<strong>You peeked at ${otherPlayerName}:</strong><br>Their role: ${otherRole}`;
-
-            card.appendChild(specialHint);
-            
-            // Show the hint with animation
-            setTimeout(() => {
-              specialHint.classList.add('show');
-            }, 10);
+            specialHint.innerHTML = `<strong>Your Mission:</strong><br>Find imposters!<br><br><strong>You peeked at ${otherPlayerName}:</strong><br>Their role: ${otherRole}`;
           } else {
             // Edge case: only one player
-            specialHint = document.createElement("div");
             specialHint.className = "detective-hint";
-            specialHint.innerHTML = `<strong>No other players to peek at!</strong>`;
-            card.appendChild(specialHint);
-            
-            setTimeout(() => {
-              specialHint.classList.add('show');
-            }, 10);
+            specialHint.innerHTML = `<strong>Your Mission:</strong><br>Find imposters!<br><br><strong>No other players to peek at!</strong>`;
           }
-        }
-
-        // Assassin ability: show target player
-        if (word === "Assassin" && assassinTarget) {
+        } else if (word === "Assassin" && assassinTarget) {
+          // Assassin ability: show target player
           const targetName = playerNames[assassinTarget - 1] || `Player ${assassinTarget}`;
-          specialHint = document.createElement("div");
           specialHint.className = "assassin-hint";
           specialHint.innerHTML = `<strong>Your Mission:</strong><br>Get ${targetName} voted out!`;
-
-          card.appendChild(specialHint);
+        } else if (word === "Jester") {
+          // Jester ability: show mission
+          specialHint.className = "jester-hint";
+          specialHint.innerHTML = `<strong>Your Mission:</strong><br>Get voted out!`;
+        }
+        
+        // Pregnant hint (can stack with other roles)
+        if (pregnantPlayer === i) {
+          const pregnantHint = document.createElement("div");
+          pregnantHint.className = "pregnant-hint";
+          pregnantHint.innerHTML = `<strong>You're Pregnant!</strong><br>You get 2 votes!`;
+          card.appendChild(pregnantHint);
           
           // Show the hint with animation
           setTimeout(() => {
-            specialHint.classList.add('show');
+            pregnantHint.classList.add('show');
           }, 10);
         }
 
-        // Jester ability: show mission
-        if (word === "Jester") {
-          specialHint = document.createElement("div");
-          specialHint.className = "jester-hint";
-          specialHint.innerHTML = `<strong>Your Mission:</strong><br>Get voted out!`;
-
+        if (specialHint.textContent) {
           card.appendChild(specialHint);
           
           // Show the hint with animation
@@ -3070,19 +3318,29 @@ function generateCards() {
       if (btn.textContent === "Close") {
         viewed = true;
 
-        // Hide special hint if it exists
+        // Hide special hints if they exist
         if (specialHint) {
           specialHint.classList.remove('show');
+        }
+        
+        // Hide pregnant hint if it exists
+        const pregnantHint = card.querySelector('.pregnant-hint');
+        if (pregnantHint) {
+          pregnantHint.classList.remove('show');
         }
 
         wordBox.classList.remove("word-revealed");
         categoryBox.classList.remove("category-shown");
 
         setTimeout(() => {
-          // Remove special hint completely when closing
+          // Remove special hints completely when closing
           if (specialHint && specialHint.parentNode) {
             specialHint.parentNode.removeChild(specialHint);
             specialHint = null;
+          }
+          
+          if (pregnantHint && pregnantHint.parentNode) {
+            pregnantHint.parentNode.removeChild(pregnantHint);
           }
           
           // Clear the word box content and reset
@@ -3122,10 +3380,13 @@ generateBtn.addEventListener("click", generateCards);
 revealRolesBtn.addEventListener("click", revealAllRoles);
 
 // Player names event listeners
-randomizeNamesBtn.addEventListener("click", randomizePlayerNames);
 resetNamesBtn.addEventListener("click", resetPlayerNames);
 showPlayerNamesBtn.addEventListener("click", showPlayerNames);
 hidePlayerNamesBtn.addEventListener("click", hidePlayerNames);
+
+// Add/Remove player buttons
+addPlayerBtn.addEventListener("click", addPlayer);
+removePlayerBtn.addEventListener("click", removePlayer);
 
 // Update player names when player slider changes
 playerSlider.addEventListener("input", () => {
@@ -3143,6 +3404,9 @@ playerSlider.addEventListener("input", () => {
   }
   
   localStorage.setItem("playerNames", JSON.stringify(playerNames));
+  
+  // Update player count display
+  playerCountDisplay.textContent = playerCount;
   
   // Update the player names list if it's visible
   if (playerNamesSection.style.display === 'block') {
@@ -3163,6 +3427,10 @@ assassinToggle.addEventListener("change", () => {
   localStorage.setItem("assassinEnabled", assassinToggle.checked);
 });
 
+pregnantToggle.addEventListener("change", () => {
+  localStorage.setItem("pregnantEnabled", pregnantToggle.checked);
+});
+
 /* ===== INITIALIZATION ===== */
 initializeSubjectOptions();
 
@@ -3175,6 +3443,9 @@ if (playerNames.length === 0) {
   // Save default names to localStorage
   localStorage.setItem("playerNames", JSON.stringify(playerNames));
 }
+
+// Initialize player count display
+playerCountDisplay.textContent = playerCount;
 
 if (currentSubject) {
   showSelectedSubject();
