@@ -179,10 +179,144 @@
       flex: 1;
     }
 
-    .modal-section {
-      margin-bottom: 28px;
+    /* ===== Dynamic Category Form Styles ===== */
+    .form-group {
+      margin-bottom: 20px;
     }
 
+    .form-label {
+      display: block;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #4f46e5;
+    }
+
+    /* Category Block Styling */
+    .category-block {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .category-block:hover {
+      border-color: #d1d5db;
+    }
+
+    .remove-category-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #fee2e2;
+      color: #dc2626;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .remove-category-btn:hover {
+      background: #fecaca;
+      transform: scale(1.1);
+    }
+
+    .add-category-btn {
+      width: 100%;
+      padding: 12px;
+      background: #eef2ff;
+      color: #4f46e5;
+      border: 2px dashed #c7d2fe;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 20px;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .add-category-btn:hover {
+      background: #e0e7ff;
+      border-color: #818cf8;
+    }
+
+    .form-textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .form-hint {
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 6px;
+    }
+
+    .modal-footer {
+      padding: 16px 24px 24px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .btn-secondary {
+      padding: 12px 20px;
+      background: #f3f4f6;
+      color: #4b5563;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: #e5e7eb;
+    }
+
+    .btn-primary {
+      padding: 12px 20px;
+      background: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #4338ca;
+    }
+
+    /* Modal Text Styles */
+    .modal-section { margin-bottom: 28px; }
     .modal-section h3 {
       margin: 0 0 16px;
       font-size: 20px;
@@ -191,118 +325,39 @@
       padding-bottom: 8px;
       border-bottom: 2px solid #eef2ff;
     }
+    .modal-section p { margin: 0 0 16px; line-height: 1.6; color: #444; }
+    .modal-section ul, .modal-section ol { margin: 0 0 16px; padding-left: 24px; }
+    .modal-section li { margin-bottom: 10px; line-height: 1.5; color: #444; }
 
-    .modal-section p {
-      margin: 0 0 16px;
-      line-height: 1.6;
-      color: #444;
-    }
-
-    .modal-section ul, .modal-section ol {
-      margin: 0 0 16px;
-      padding-left: 24px;
-    }
-
-    .modal-section li {
-      margin-bottom: 10px;
-      line-height: 1.5;
-      color: #444;
-    }
-
+    /* Role Grid & Cards */
     .role-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 16px;
       margin-top: 16px;
     }
+    @media (max-width: 700px) { .role-grid { grid-template-columns: 1fr; } }
 
-    @media (max-width: 700px) {
-      .role-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    .role-card { background: #f9fafb; border-radius: 12px; padding: 20px; border-left: 4px solid #4f46e5; }
+    .role-card.civilian { border-left-color: #3b82f6; }
+    .role-card.imposter { border-left-color: #dc2626; }
+    .role-card.detective { border-left-color: #10b981; }
+    .role-card.jester { border-left-color: #f59e0b; }
+    .role-card.assassin { border-left-color: #8b5cf6; }
+    .role-card.king { border-left-color: #eab308; }
+    .role-card.clueless { border-left-color: #06b6d4; }
 
-    .role-card {
-      background: #f9fafb;
-      border-radius: 12px;
-      padding: 20px;
-      border-left: 4px solid #4f46e5;
-    }
-
-    .role-card.civilian {
-      border-left-color: #3b82f6;
-    }
-
-    .role-card.imposter {
-      border-left-color: #dc2626;
-    }
-
-    .role-card.detective {
-      border-left-color: #10b981;
-    }
-
-    .role-card.jester {
-      border-left-color: #f59e0b;
-    }
-
-    .role-card.assassin {
-      border-left-color: #8b5cf6;
-    }
-
-    .role-card.pregnant {
-      border-left-color: #ec4899;
-    }
-
-    .role-card.clueless {
-      border-left-color: #06b6d4;
-    }
-
-    .role-card h4 {
-      margin: 0 0 12px;
-      font-size: 18px;
-      font-weight: 700;
-      color: #111;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .role-card .role-icon {
-      width: 24px;
-      height: 24px;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: bold;
-      color: white;
-    }
-
+    .role-card h4 { margin: 0 0 12px; font-size: 18px; font-weight: 700; color: #111; display: flex; align-items: center; gap: 8px; }
+    .role-card .role-icon { width: 24px; height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: bold; color: white; }
     .civilian .role-icon { background: #3b82f6; }
     .imposter .role-icon { background: #dc2626; }
     .detective .role-icon { background: #10b981; }
     .jester .role-icon { background: #f59e0b; }
     .assassin .role-icon { background: #8b5cf6; }
-    .pregnant .role-icon { background: #ec4899; }
+    .king .role-icon { background: linear-gradient(135deg, #eab308, #ca8a04); }
     .clueless .role-icon { background: #06b6d4; }
-
-    .role-card p {
-      margin: 0 0 12px;
-      font-size: 15px;
-      line-height: 1.5;
-      color: #444;
-    }
-
-    .role-card .goal {
-      font-weight: 600;
-      color: #111;
-      background: #eef2ff;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 14px;
-      margin-top: 8px;
-    }
+    .role-card p { margin: 0 0 12px; font-size: 15px; line-height: 1.5; color: #444; }
+    .role-card .goal { font-weight: 600; color: #111; background: #eef2ff; padding: 8px 12px; border-radius: 8px; font-size: 14px; margin-top: 8px; }
 
     /* ===== Subject Selection ===== */
     .subject-section {
@@ -315,13 +370,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
-    .subject-section h2 {
-      margin: 0 0 16px;
-      text-align: center;
-      font-size: clamp(18px, 4vw, 20px);
-      color: #333;
-      font-weight: 700;
-    }
+    .subject-section h2 { margin: 0 0 16px; text-align: center; font-size: clamp(18px, 4vw, 20px); color: #333; font-weight: 700; }
 
     .subject-options {
       display: grid;
@@ -330,12 +379,7 @@
       margin-bottom: 20px;
       width: 100%;
     }
-
-    @media (max-width: 500px) {
-      .subject-options {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      }
-    }
+    @media (max-width: 500px) { .subject-options { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); } }
 
     .subject-option {
       padding: 14px 10px;
@@ -349,1343 +393,189 @@
       transition: all 0.2s;
       color: #4b5563;
       width: 100%;
-    }
-
-    .subject-option:hover {
-      background: #f3f4f6;
-      transform: translateY(-2px);
-      border-color: #d1d5db;
-    }
-
-    .subject-option.selected {
-      background: #e0e7ff;
-      border-color: #4f46e5;
-      color: #4f46e5;
-      box-shadow: 0 4px 8px rgba(79, 70, 229, 0.1);
-    }
-
-    .custom-subject-container {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid #e5e7eb;
-      width: 100%;
-    }
-
-    .custom-subject-input {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      width: 100%;
-    }
-
-    @media (max-width: 480px) {
-      .custom-subject-input {
-        flex-direction: column;
-      }
-    }
-
-    .custom-subject-input input {
-      flex: 1;
-      padding: 12px;
-      font-size: 15px;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      transition: border-color 0.2s;
-      min-width: 0;
-    }
-
-    .custom-subject-input input:focus {
-      outline: none;
-      border-color: #4f46e5;
-    }
-
-    .custom-subject-btn {
-      padding: 12px 20px;
-      border: none;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #10b981, #34d399);
-      color: white;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: transform 0.12s ease, box-shadow 0.2s;
-      box-shadow: 0 4px 8px rgba(16, 185, 129, 0.25);
-    }
-
-    @media (max-width: 480px) {
-      .custom-subject-btn {
-        width: 100%;
-      }
-    }
-
-    .custom-subject-btn:hover {
-      box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
-    }
-
-    .custom-subject-btn:active {
-      transform: scale(0.96);
-    }
-
-    .selected-subject-display {
-      text-align: center;
-      margin: 20px 0;
-      padding: 16px;
-      background: linear-gradient(135deg, #e0e7ff, #f3f4f6);
-      border-radius: 14px;
-      border: 2px solid #4f46e5;
-      width: 100%;
-    }
-
-    .selected-subject-display h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
-      color: #6b7280;
-      font-weight: 600;
-    }
-
-    .selected-subject-display .subject-name {
-      font-size: clamp(20px, 4vw, 22px);
-      font-weight: 800;
-      color: #4f46e5;
-      margin: 0;
-      word-break: break-word;
-    }
-
-    .change-subject-btn {
-      display: block;
-      margin: 8px auto 0;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 999px;
-      background: #f3f4f6;
-      color: #6b7280;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      width: fit-content;
-    }
-
-    .change-subject-btn:hover {
-      background: #e5e7eb;
-      color: #4b5563;
-    }
-
-    /* ===== Player Names Section ===== */
-    .player-names-section {
-      width: 100%;
-      max-width: 500px;
-      margin-bottom: 20px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      display: none; /* Hidden by default */
-    }
-
-    .player-names-section h2 {
-      margin: 0 0 16px;
-      text-align: center;
-      font-size: clamp(18px, 4vw, 20px);
-      color: #333;
-      font-weight: 700;
-    }
-
-    .player-names-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid #eef2ff;
-    }
-
-    .player-names-header h3 {
-      margin: 0;
-      font-size: 16px;
-      color: #4f46e5;
-      font-weight: 700;
-    }
-
-    .player-names-buttons {
-      display: flex;
-      gap: 8px;
-    }
-
-    .reset-names-btn {
-      padding: 8px 16px;
-      border: none;
-      border-radius: 999px;
-      background: #fee2e2;
-      color: #dc2626;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-
-    .reset-names-btn:hover {
-      background: #fecaca;
-      transform: translateY(-1px);
-    }
-
-    .player-names-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 10px;
-      margin-bottom: 20px;
-      width: 100%;
-    }
-
-    @media (max-width: 500px) {
-      .player-names-list {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      }
-    }
-
-    .player-name-input-container {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
       position: relative;
     }
+    .subject-option:hover { background: #f3f4f6; transform: translateY(-2px); border-color: #d1d5db; }
+    .subject-option.selected { background: #e0e7ff; border-color: #4f46e5; color: #4f46e5; box-shadow: 0 4px 8px rgba(79, 70, 229, 0.1); }
+    .subject-option.add-new { border: 2px dashed #4f46e5; color: #4f46e5; background: #eef2ff; display: flex; align-items: center; justify-content: center; gap: 6px; }
+    .subject-option.add-new:hover { background: #e0e7ff; }
 
-    .player-name-label {
-      font-size: 13px;
-      color: #6b7280;
-      font-weight: 600;
-      text-align: center;
+    .delete-subject-btn {
+      position: absolute; top: -6px; right: -6px; width: 22px; height: 22px;
+      background: #ef4444; color: white; border-radius: 50%; border: 2px solid white;
+      font-size: 14px; font-weight: bold; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.2s, transform 0.2s;
     }
+    .subject-option:hover .delete-subject-btn { opacity: 1; }
+    .delete-subject-btn:hover { background: #dc2626; transform: scale(1.1); }
+    @media (hover: none) { .delete-subject-btn { opacity: 1; } }
 
-    .player-name-input {
-      padding: 12px;
-      font-size: 15px;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      text-align: center;
-      transition: border-color 0.2s;
-      width: 100%;
-    }
-
-    .player-name-input:focus {
-      outline: none;
-      border-color: #4f46e5;
-    }
-
-    /* Add/Remove player controls at bottom */
-    .player-count-controls {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: center;
-      margin-bottom: 20px;
-      padding: 16px;
-      background: #f9fafb;
-      border-radius: 12px;
-      border: 2px solid #e5e7eb;
-      width: 100%;
-    }
-
-    .player-count-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: #4b5563;
-      text-align: center;
-    }
-
-    .count-buttons {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .count-btn {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: none;
-      background: #e0e7ff;
-      color: #4f46e5;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.2);
-    }
-
-    .count-btn:hover {
-      background: #c7d2fe;
-      transform: scale(1.1);
-      box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3);
-    }
-
-    .count-btn:active {
-      transform: scale(0.95);
-    }
-
-    .count-btn.remove {
-      background: #fee2e2;
-      color: #dc2626;
-      box-shadow: 0 2px 6px rgba(220, 38, 38, 0.2);
-    }
-
-    .count-btn.remove:hover {
-      background: #fecaca;
-      box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
-    }
-
-    .player-count {
-      font-size: 24px;
-      font-weight: 800;
-      color: #4f46e5;
-      min-width: 50px;
-      text-align: center;
-    }
-
-    /* ===== Controls ===== */
-    .controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      background: #fff;
-      padding: 16px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      width: 100%;
-      max-width: 500px;
-    }
-
-    .controls > div {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      min-width: 120px;
-      max-width: 200px;
-    }
-
-    @media (max-width: 480px) {
-      .controls {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 16px;
-      }
-      
-      .controls > div {
-        max-width: 100%;
-        min-width: 0;
-      }
-    }
-
-    .controls label {
-      font-size: 14px;
-      color: #444;
-      margin-bottom: 6px;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .controls input {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      text-align: center;
-      transition: border-color 0.2s;
-    }
-
-    .controls input:focus {
-      outline: none;
-      border-color: #4f46e5;
-    }
-
-    /* Role toggle styling */
-    .role-toggle {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      min-width: 120px;
-      max-width: 200px;
-      padding: 12px 0;
-    }
-
-    .role-toggle label {
-      margin-bottom: 0;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 15px;
-      color: #444;
-      font-weight: 600;
-    }
-
-    .role-toggle input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      margin: 0;
-      cursor: pointer;
-    }
-
-    .detective-toggle input[type="checkbox"] { accent-color: #10b981; }
-    .jester-toggle input[type="checkbox"] { accent-color: #f59e0b; }
-    .assassin-toggle input[type="checkbox"] { accent-color: #8b5cf6; }
-    .pregnant-toggle input[type="checkbox"] { accent-color: #ec4899; }
-    .clueless-toggle input[type="checkbox"] { accent-color: #06b6d4; }
-
-    @media (max-width: 480px) {
-      .role-toggle {
-        max-width: 100%;
-      }
-    }
-
-    /* Slider styling */
-    .slider-container {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      min-width: 120px;
-      max-width: 200px;
-      padding: 0 4px;
-    }
-
-    .slider-label {
-      font-size: 14px;
-      color: #444;
-      margin-bottom: 6px;
-      font-weight: 600;
-      text-align: center;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .slider-label span {
-      font-weight: 800;
-      color: #4f46e5;
-      font-size: 16px;
-      min-width: 24px;
-      text-align: right;
-    }
-
-    .slider-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
-
-    .slider-value {
-      font-size: 16px;
-      font-weight: 700;
-      color: #4f46e5;
-      min-width: 28px;
-      text-align: center;
-    }
-
-    .slider {
-      flex: 1;
-      height: 6px;
-      -webkit-appearance: none;
-      appearance: none;
-      background: #e5e7eb;
-      border-radius: 3px;
-      outline: none;
-      cursor: pointer;
-    }
-
-    .slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: #4f46e5;
-      cursor: pointer;
-      border: 3px solid white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      transition: all 0.2s;
-    }
-
-    .slider::-webkit-slider-thumb:hover {
-      transform: scale(1.1);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-    }
-
-    .slider::-moz-range-thumb {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: #4f46e5;
-      cursor: pointer;
-      border: 3px solid white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      transition: all 0.2s;
-    }
-
-    .slider::-moz-range-thumb:hover {
-      transform: scale(1.1);
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-    }
-
-    .slider-minmax {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: #6b7280;
-      margin-top: 2px;
-    }
-
-    .slider-minmax span {
-      font-weight: 600;
-    }
-
-    .btn {
-      padding: 14px 24px;
-      border: none;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      width: 100%;
-      max-width: 300px;
-      text-align: center;
-      transition: transform 0.12s ease, box-shadow 0.2s;
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
-      margin-top: 8px;
-    }
-
-    .btn:hover {
-      box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
-    }
-
-    .btn:active {
-      transform: scale(0.96);
-    }
-
-    .btn:disabled {
-      background: linear-gradient(135deg, #9ca3af, #d1d5db);
-      cursor: not-allowed;
-      box-shadow: none;
-      transform: none;
-    }
-
-    .error {
-      text-align: center;
-      color: #dc2626;
-      min-height: 20px;
-      font-size: 14px;
-      font-weight: 500;
-      margin: 8px 0 16px;
-      width: 100%;
-      padding: 0 12px;
-      max-width: 500px;
-    }
-
-    /* ===== Cards ===== */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
-      width: 100%;
-      max-width: 1000px;
-      justify-items: center;
-    }
-
-    @media (max-width: 600px) {
-      .cards {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .cards {
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        gap: 8px;
-      }
-    }
-
-    @media (max-width: 350px) {
-      .cards {
-        grid-template-columns: 1fr;
-        max-width: 280px;
-      }
-    }
-
-    .card {
-      background: #fff;
-      border-radius: 14px;
-      padding: 14px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      user-select: none;
-      overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
-      width: 100%;
-      max-width: 200px;
-    }
-
-    @media (max-width: 600px) {
-      .card {
-        max-width: 180px;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .card {
-        max-width: 160px;
-        padding: 12px;
-      }
-    }
-
-    @media (max-width: 350px) {
-      .card {
-        max-width: 100%;
-      }
-    }
-
-    .card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: clamp(14px, 3vw, 16px);
-      font-weight: 700;
-    }
-
-    .status-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      color: #777;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      transition: color 0.15s;
-    }
-
-    /* ===== Word box ===== */
-    .word-box {
-      padding: 16px 10px;
-      border-radius: 12px;
-      border: 1px dashed #bbb;
-      text-align: center;
-      font-size: clamp(16px, 4vw, 20px);
-      font-weight: 800;
-      opacity: 0;
-      transform: scale(0.9);
-      transition: opacity 0.25s, transform 0.25s;
-      min-height: 60px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      word-break: break-word;
-      overflow-wrap: break-word;
-      width: 100%;
-    }
-
-    @media (max-width: 400px) {
-      .word-box {
-        min-height: 54px;
-        padding: 12px 8px;
-      }
-    }
-
-    .word-hidden { 
-      color: #777; 
-    }
+    .custom-subject-container { margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5e7eb; width: 100%; }
+    .custom-subject-input { display: flex; gap: 10px; align-items: center; width: 100%; }
+    @media (max-width: 480px) { .custom-subject-input { flex-direction: column; } }
+    .custom-subject-input input { flex: 1; padding: 12px; font-size: 15px; border: 2px solid #ddd; border-radius: 10px; transition: border-color 0.2s; min-width: 0; }
+    .custom-subject-input input:focus { outline: none; border-color: #4f46e5; }
     
-    .word-revealed { 
-      color: #111; 
-      opacity: 1; 
-      transform: scale(1); 
+    .custom-subject-btn {
+      padding: 12px 20px; border: none; border-radius: 999px;
+      background: linear-gradient(135deg, #10b981, #34d399); color: white;
+      font-size: 14px; font-weight: 700; cursor: pointer; white-space: nowrap;
+      transition: transform 0.12s ease, box-shadow 0.2s; box-shadow: 0 4px 8px rgba(16, 185, 129, 0.25);
     }
+    @media (max-width: 480px) { .custom-subject-btn { width: 100%; } }
+    .custom-subject-btn:hover { box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3); }
+    .custom-subject-btn:active { transform: scale(0.96); }
 
-    .word-locked {
-      color: #999;
-      font-style: italic;
-      opacity: 1;
-      transform: scale(1);
-      font-size: 18px;
+    .selected-subject-display {
+      text-align: center; margin: 20px 0; padding: 16px;
+      background: linear-gradient(135deg, #e0e7ff, #f3f4f6); border-radius: 14px;
+      border: 2px solid #4f46e5; width: 100%;
     }
-
-    /* ===== Role styling ===== */
-    .detective-role {
-      color: #10b981;
-      font-size: 14px;
-      font-weight: 700;
-      margin-top: 4px;
-      text-align: center;
-      line-height: 1.3;
-    }
-
-    .jester-role {
-      color: #f59e0b;
-      font-size: 14px;
-      font-weight: 700;
-      margin-top: 4px;
-      text-align: center;
-      line-height: 1.3;
-    }
-
-    .assassin-role {
-      color: #8b5cf6;
-      font-size: 14px;
-      font-weight: 700;
-      margin-top: 4px;
-      text-align: center;
-      line-height: 1.3;
-    }
-
-    .pregnant-role {
-      color: #ec4899;
-      font-size: 14px;
-      font-weight: 700;
-      margin-top: 4px;
-      text-align: center;
-      line-height: 1.3;
-    }
-
-    /* ===== Category box ===== */
-    .category-box {
-      padding: 10px 12px;
-      border-radius: 10px;
-      background: #eef2ff;
-      text-align: center;
-      font-size: clamp(14px, 3.5vw, 16px);
-      font-weight: 600;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition: opacity 0.25s, transform 0.25s;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      word-break: break-word;
-      width: 100%;
-    }
-
-    @media (max-width: 400px) {
-      .category-box {
-        min-height: 40px;
-        padding: 8px 10px;
-      }
-    }
-
-    .category-shown {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===== Button ===== */
-    .card-btn {
-      padding: 12px 14px;
-      border-radius: 999px;
-      border: none;
-      background: #e5e7eb;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      width: 100%;
-      transition: all 0.2s;
-      color: #333;
-      margin-top: 4px;
-    }
-
-    .card-btn:active {
-      transform: scale(0.96);
-    }
-
-    .card-btn.locked {
-      background: #d1d5db;
-      color: #6b7280;
-      cursor: default;
-      transform: none;
-      opacity: 0.8;
-    }
-
-    /* ===== Detective/Assassin/Jester hint styling ===== */
-    .detective-hint,
-    .assassin-hint,
-    .jester-hint,
-    .pregnant-hint {
-      font-size: 13px;
-      font-weight: 600;
-      margin-top: 6px;
-      text-align: center;
-      padding: 8px;
-      border-radius: 8px;
-      border: 1px solid;
-      line-height: 1.4;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.25s, transform 0.25s;
-    }
-
-    .detective-hint {
-      color: #10b981;
-      background: #f0fdf4;
-      border-color: #bbf7d0;
-    }
-
-    .assassin-hint {
-      color: #8b5cf6;
-      background: #f5f3ff;
-      border-color: #ddd6fe;
-    }
-
-    .jester-hint {
-      color: #f59e0b;
-      background: #fef3c7;
-      border-color: #fde68a;
-    }
-
-    .pregnant-hint {
-      color: #ec4899;
-      background: #fdf2f8;
-      border-color: #fbcfe8;
-    }
-
-    .detective-hint.show,
-    .assassin-hint.show,
-    .jester-hint.show,
-    .pregnant-hint.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===== Status Section ===== */
-    .status-section {
-      margin-top: 28px;
-      width: 100%;
-      max-width: 500px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .reveal-tracker {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: clamp(16px, 4vw, 20px);
-      font-weight: 800;
-      color: #4f46e5;
-      min-height: 32px;
-      padding: 16px;
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 100%;
-    }
-
-    .first-player {
-      text-align: center;
-      padding: 20px 16px;
-      background: linear-gradient(135deg, #4f46e5, #8b5cf6);
-      color: white;
-      border-radius: 18px;
-      font-size: clamp(18px, 5vw, 24px);
-      font-weight: 900;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s, transform 0.5s;
-      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
-      width: 100%;
-      line-height: 1.3;
-      margin-bottom: 16px;
-    }
-
-    .first-player.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-roles-btn {
-      padding: 14px 24px;
-      border: none;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #f59e0b, #fbbf24);
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      width: 100%;
-      max-width: 300px;
-      text-align: center;
-      transition: transform 0.12s ease, box-shadow 0.2s;
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
-      margin-bottom: 16px;
-    }
-
-    .reveal-roles-btn:hover {
-      box-shadow: 0 6px 16px rgba(245, 158, 11, 0.3);
-    }
-
-    .reveal-roles-btn:active {
-      transform: scale(0.96);
-    }
-
-    .reveal-roles-btn:disabled {
-      background: linear-gradient(135deg, #9ca3af, #d1d5db);
-      cursor: not-allowed;
-      box-shadow: none;
-      transform: none;
-    }
-
-    /* ===== Pregnant Announcement ===== */
-    .pregnant-announcement {
-      text-align: center;
-      padding: 20px 16px;
-      background: linear-gradient(135deg, #ec4899, #f472b6);
-      color: white;
-      border-radius: 18px;
-      font-size: clamp(16px, 4vw, 20px);
-      font-weight: 700;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s, transform 0.5s;
-      box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
-      width: 100%;
-      line-height: 1.4;
-      margin-bottom: 16px;
-    }
-
-    .pregnant-announcement.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ===== Roles Reveal Box - Updated to match page style ===== */
-    .roles-reveal-box {
-      text-align: center;
-      padding: 0;
-      background: #fff;
-      color: #222;
-      border-radius: 16px;
-      font-size: clamp(16px, 4vw, 18px);
-      font-weight: 600;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s, transform 0.5s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 100%;
-      line-height: 1.4;
-      margin-bottom: 16px;
-      max-height: 0;
-      overflow: hidden;
-      border: 2px solid #4f46e5;
-    }
-
-    .roles-reveal-box.show {
-      opacity: 1;
-      transform: translateY(0);
-      max-height: 600px;
-      transition: opacity 0.5s, transform 0.5s, max-height 0.5s;
-    }
-
-    .roles-reveal-header {
-      padding: 20px 16px;
-      background: linear-gradient(135deg, #4f46e5, #6366f1);
-      color: white;
-      border-radius: 14px 14px 0 0;
-      margin: 0;
-    }
-
-    .roles-reveal-header h3 {
-      margin: 0;
-      font-size: clamp(18px, 4vw, 22px);
-      font-weight: 800;
-    }
-
-    .roles-reveal-content {
-      padding: 20px;
-    }
-
-    .role-list {
-      text-align: left;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .role-list li {
-      margin-bottom: 12px;
-      padding: 14px 16px;
-      background: #f9fafb;
-      border-radius: 12px;
-      font-size: 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border-left: 4px solid #4f46e5;
-    }
-
-    .role-list li:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .role-list .player-number {
-      font-weight: 800;
-      margin-right: 10px;
-      color: #4f46e5;
-      font-size: 16px;
-      min-width: 80px;
-    }
-
-    .role-list .role-name {
-      font-weight: 600;
-      padding: 6px 12px;
-      border-radius: 8px;
-      background: #eef2ff;
-      color: #4f46e5;
-      font-size: 14px;
-      flex: 1;
-      text-align: center;
-    }
-
-    .role-list .civilian-role {
-      background: #e0e7ff;
-      color: #3b82f6;
-      border-left-color: #3b82f6;
-    }
-
-    .role-list .imposter-role {
-      background: #fee2e2;
-      color: #dc2626;
-      border-left-color: #dc2626;
-    }
-
-    .role-list .detective-role {
-      background: #d1fae5;
-      color: #10b981;
-      border-left-color: #10b981;
-    }
-
-    .role-list .jester-role {
-      background: #fef3c7;
-      color: #f59e0b;
-      border-left-color: #f59e0b;
-    }
-
-    .role-list .assassin-role {
-      background: #f5f3ff;
-      color: #8b5cf6;
-      border-left-color: #8b5cf6;
-    }
-
-    .role-list .pregnant-role {
-      background: #fdf2f8;
-      color: #ec4899;
-      border-left-color: #ec4899;
-    }
-
-    .role-list .clueless-role {
-      background: #ecfeff;
-      color: #0891b2;
-      border-left-color: #0891b2;
-    }
-
-    .assassin-target {
-      font-size: 12px;
-      color: #8b5cf6;
-      font-weight: 600;
-      margin-top: 4px;
-      background: rgba(139, 92, 246, 0.1);
-      padding: 4px 8px;
-      border-radius: 6px;
-      display: inline-block;
-    }
-
-    .pregnant-badge {
-      font-size: 12px;
-      color: #ec4899;
-      font-weight: 600;
-      margin-top: 4px;
-      background: rgba(236, 72, 153, 0.1);
-      padding: 4px 8px;
-      border-radius: 6px;
-      display: inline-block;
-    }
+    .selected-subject-display h3 { margin: 0 0 8px; font-size: 16px; color: #6b7280; font-weight: 600; }
+    .selected-subject-display .subject-name { font-size: clamp(20px, 4vw, 22px); font-weight: 800; color: #4f46e5; margin: 0; word-break: break-word; }
     
-    .clueless-word-display {
-      font-size: 12px;
-      color: #0891b2;
-      font-weight: 600;
-      margin-top: 4px;
-      background: rgba(6, 182, 212, 0.1);
-      padding: 4px 8px;
-      border-radius: 6px;
-      display: inline-block;
+    .change-subject-btn {
+      display: block; margin: 8px auto 0; padding: 8px 16px; border: none;
+      border-radius: 999px; background: #f3f4f6; color: #6b7280;
+      font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; width: fit-content;
     }
+    .change-subject-btn:hover { background: #e5e7eb; color: #4b5563; }
 
-    .footer-note {
-      margin-top: 24px;
-      text-align: center;
-      font-size: 13px;
-      color: #666;
-      padding: 0 12px;
-      line-height: 1.5;
-      max-width: 500px;
-      width: 100%;
-    }
+    /* Player Names & Controls Styling kept consistent */
+    .player-names-section { width: 100%; max-width: 500px; margin-bottom: 20px; background: #fff; padding: 20px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); display: none; }
+    .player-names-section h2 { margin: 0 0 16px; text-align: center; font-size: clamp(18px, 4vw, 20px); color: #333; font-weight: 700; }
+    .player-names-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid #eef2ff; }
+    .player-names-header h3 { margin: 0; font-size: 16px; color: #4f46e5; font-weight: 700; }
+    .player-names-buttons { display: flex; gap: 8px; }
+    .reset-names-btn { padding: 8px 16px; border: none; border-radius: 999px; background: #fee2e2; color: #dc2626; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .reset-names-btn:hover { background: #fecaca; transform: translateY(-1px); }
+    .player-names-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; margin-bottom: 20px; width: 100%; }
+    @media (max-width: 500px) { .player-names-list { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); } }
+    .player-name-input-container { display: flex; flex-direction: column; gap: 6px; position: relative; }
+    .player-name-label { font-size: 13px; color: #6b7280; font-weight: 600; text-align: center; }
+    .player-name-input { padding: 12px; font-size: 15px; border: 2px solid #ddd; border-radius: 10px; text-align: center; transition: border-color 0.2s; width: 100%; }
+    .player-name-input:focus { outline: none; border-color: #4f46e5; }
+    .player-count-controls { display: flex; flex-direction: column; gap: 12px; align-items: center; margin-bottom: 20px; padding: 16px; background: #f9fafb; border-radius: 12px; border: 2px solid #e5e7eb; width: 100%; }
+    .player-count-label { font-size: 14px; font-weight: 600; color: #4b5563; text-align: center; }
+    .count-buttons { display: flex; gap: 20px; align-items: center; justify-content: center; width: 100%; }
+    .count-btn { width: 48px; height: 48px; border-radius: 50%; border: none; background: #e0e7ff; color: #4f46e5; font-size: 28px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s; box-shadow: 0 2px 6px rgba(79, 70, 229, 0.2); }
+    .count-btn:hover { background: #c7d2fe; transform: scale(1.1); box-shadow: 0 4px 8px rgba(79, 70, 229, 0.3); }
+    .count-btn:active { transform: scale(0.95); }
+    .count-btn.remove { background: #fee2e2; color: #dc2626; box-shadow: 0 2px 6px rgba(220, 38, 38, 0.2); }
+    .count-btn.remove:hover { background: #fecaca; box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3); }
+    .player-count { font-size: 24px; font-weight: 800; color: #4f46e5; min-width: 50px; text-align: center; }
+    .toggle-player-names { margin: 8px 0 0; padding: 8px 16px; border: none; border-radius: 999px; background: #e0e7ff; color: #4f46e5; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; width: fit-content; display: block; margin-left: auto; margin-right: auto; }
+    .toggle-player-names:hover { background: #c7d2fe; transform: translateY(-1px); }
 
-    /* Toggle for player names */
-    .toggle-player-names {
-      margin: 8px 0 0;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 999px;
-      background: #e0e7ff;
-      color: #4f46e5;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      width: fit-content;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    /* Controls */
+    .controls { display: flex; flex-direction: column; gap: 16px; align-items: center; justify-content: center; margin-bottom: 20px; background: #fff; padding: 20px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); width: 100%; max-width: 500px; }
+    .sliders-row { display: flex; flex-wrap: wrap; gap: 20px; width: 100%; justify-content: space-around; }
+    .slider-container { display: flex; flex-direction: column; flex: 1; min-width: 140px; }
+    .slider-label { font-size: 14px; color: #444; margin-bottom: 6px; font-weight: 600; text-align: center; display: flex; justify-content: space-between; align-items: center; }
+    .slider-label span { font-weight: 800; color: #4f46e5; font-size: 16px; min-width: 24px; text-align: right; }
+    .slider-wrapper { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .slider { flex: 1; height: 6px; -webkit-appearance: none; appearance: none; background: #e5e7eb; border-radius: 3px; outline: none; cursor: pointer; }
+    .slider::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #4f46e5; cursor: pointer; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: all 0.2s; }
+    .slider::-webkit-slider-thumb:hover { transform: scale(1.1); box-shadow: 0 3px 8px rgba(0,0,0,0.3); }
+    .slider-minmax { display: flex; justify-content: space-between; font-size: 12px; color: #6b7280; margin-top: 2px; }
+    .slider-minmax span { font-weight: 600; }
 
-    .toggle-player-names:hover {
-      background: #c7d2fe;
-      transform: translateY(-1px);
-    }
+    /* Roles */
+    .roles-section { width: 100%; background: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb; padding: 12px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .roles-section h3 { margin: 0 0 4px; font-size: 14px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; }
+    .role-toggle { display: flex; align-items: center; justify-content: center; cursor: pointer; user-select: none; }
+    .role-toggle.full-width { width: 100%; background: #eef2ff; border-radius: 8px; padding: 10px; border: 1px solid #e0e7ff; }
+    .role-toggle.full-width label { width: 100%; display: flex; justify-content: center; gap: 10px; color: #4f46e5; font-weight: 700; }
+    .roles-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; width: 100%; }
+    .role-pill { flex: 1 1 100px; max-width: 140px; background: white; border: 1px solid #ddd; border-radius: 8px; padding: 8px 6px; display: flex; justify-content: center; align-items: center; transition: all 0.2s; }
+    .role-pill label { cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 13px; color: #444; font-weight: 600; margin: 0; width: 100%; justify-content: center; }
+    .role-pill input[type="checkbox"] { margin: 0; width: 16px; height: 16px; cursor: pointer; }
+    .role-pill:hover { background: #f3f4f6; }
+    .role-pill.disabled { opacity: 0.5; pointer-events: none; background: #f3f4f6; }
+    .detective-toggle input { accent-color: #10b981; }
+    .jester-toggle input { accent-color: #f59e0b; }
+    .assassin-toggle input { accent-color: #8b5cf6; }
+    .king-toggle input { accent-color: #eab308; }
+    .clueless-toggle input { accent-color: #06b6d4; }
+    .randomize-toggle input { accent-color: #4f46e5; }
 
-    /* ===== Detective Interaction Styles ===== */
-    body.detective-mode .card {
-      cursor: crosshair;
-      border: 2px dashed #10b981;
-      animation: pulse-border 1.5s infinite;
-    }
-
-    body.detective-mode .card.detective-active-card {
-      border: 2px solid #10b981;
-      animation: none;
-      cursor: default;
-      background: #f0fdf4;
-    }
+    .btn { padding: 14px 24px; border: none; border-radius: 999px; background: linear-gradient(135deg, #4f46e5, #6366f1); color: white; font-size: 16px; font-weight: 700; cursor: pointer; width: 100%; max-width: 300px; text-align: center; transition: transform 0.12s ease, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25); margin-top: 4px; }
+    .btn:hover { box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3); }
+    .btn:active { transform: scale(0.96); }
+    .btn:disabled { background: linear-gradient(135deg, #9ca3af, #d1d5db); cursor: not-allowed; box-shadow: none; transform: none; }
     
-    /* Disable buttons on other cards while detective is choosing */
-    body.detective-mode .card:not(.detective-active-card) .card-btn {
-      pointer-events: none;
-      opacity: 0.5;
-    }
-
-    @keyframes pulse-border {
-      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-    }
-
-    /* Small screen optimizations */
-    @media (max-width: 480px) {
-      body {
-        padding: 8px;
-        align-items: flex-start;
-      }
-      
-      .container {
-        padding: 12px 8px 20px;
-      }
-      
-      .subject-section {
-        padding: 16px;
-      }
-      
-      .player-names-section {
-        padding: 16px;
-      }
-      
-      .controls {
-        padding: 14px;
-        gap: 16px;
-      }
-      
-      .subject-options {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      }
-      
-      .player-names-list {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      }
-      
-      .modal {
-        max-height: 90vh;
-      }
-      
-      .modal-header {
-        padding: 20px 20px 16px;
-      }
-      
-      .modal-content {
-        padding: 20px;
-      }
-      
-      .modal-header h2 {
-        font-size: 20px;
-      }
-      
-      .role-list li {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-      
-      .role-list .player-number {
-        margin-right: 0;
-        min-width: auto;
-        width: 100%;
-      }
-      
-      .role-list .role-name {
-        width: 100%;
-        text-align: left;
-      }
-      
-      .roles-reveal-content {
-        padding: 16px;
-      }
-      
-      .slider-container {
-        max-width: 100%;
-        min-width: 0;
-      }
-      
-      .count-btn {
-        width: 42px;
-        height: 42px;
-        font-size: 24px;
-      }
-      
-      .player-count {
-        font-size: 20px;
-        min-width: 40px;
-      }
-    }
-
-    /* Very small screen adjustments */
-    @media (max-width: 350px) {
-      .subject-options {
-        grid-template-columns: 1fr;
-      }
-      
-      .player-names-list {
-        grid-template-columns: 1fr;
-      }
-      
-      .card-header {
-        flex-direction: column;
-        gap: 4px;
-        align-items: flex-start;
-      }
-      
-      .status-label {
-        align-self: flex-end;
-      }
-      
-      .role-list li {
-        padding: 12px;
-      }
-      
-      .count-buttons {
-        gap: 12px;
-      }
-      
-      .count-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 20px;
-      }
-      
-      .player-count {
-        font-size: 18px;
-        min-width: 30px;
-      }
-    }
-
-    /* Ensure everything stays within viewport */
-    @media (max-height: 700px) and (orientation: portrait) {
-      body {
-        align-items: flex-start;
-        padding-top: 4px;
-      }
-      
-      .container {
-        padding-top: 8px;
-      }
-      
-      h1 {
-        margin-bottom: 4px;
-      }
-      
-      .instructions {
-        margin-bottom: 12px;
-      }
-    }
-
-    /* Landscape optimization */
-    @media (max-height: 500px) and (orientation: landscape) {
-      body {
-        padding: 4px;
-        align-items: flex-start;
-      }
-      
-      .container {
-        padding: 8px 6px 12px;
-      }
-      
-      .cards {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 8px;
-        margin-top: 12px;
-      }
-      
-      .card {
-        max-width: 160px;
-        padding: 10px;
-      }
-      
-      .word-box {
-        min-height: 48px;
-        padding: 10px 6px;
-      }
-      
-      .category-box {
-        min-height: 36px;
-        padding: 6px 8px;
-      }
-      
-      .roles-reveal-box {
-        max-height: 400px;
-        overflow-y: auto;
-      }
-    }
+    .error { text-align: center; color: #dc2626; min-height: 20px; font-size: 14px; font-weight: 500; margin: 8px 0 16px; width: 100%; padding: 0 12px; max-width: 500px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; width: 100%; max-width: 1000px; justify-items: center; }
+    @media (max-width: 600px) { .cards { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; } }
+    @media (max-width: 400px) { .cards { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; } }
+    @media (max-width: 350px) { .cards { grid-template-columns: 1fr; max-width: 280px; } }
+    .card { background: #fff; border-radius: 14px; padding: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 8px; user-select: none; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; width: 100%; max-width: 200px; }
+    @media (max-width: 600px) { .card { max-width: 180px; } }
+    @media (max-width: 400px) { .card { max-width: 160px; padding: 12px; } }
+    @media (max-width: 350px) { .card { max-width: 100%; } }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,0.12); }
+    .card-header { display: flex; justify-content: space-between; align-items: center; font-size: clamp(14px, 3vw, 16px); font-weight: 700; }
+    .status-label { font-size: 11px; text-transform: uppercase; color: #777; font-weight: 600; letter-spacing: 0.5px; transition: color 0.15s; }
+    
+    .word-box { padding: 16px 10px; border-radius: 12px; border: 1px dashed #bbb; text-align: center; font-size: clamp(16px, 4vw, 20px); font-weight: 800; opacity: 0; transform: scale(0.9); transition: opacity 0.25s, transform 0.25s; min-height: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; word-break: break-word; overflow-wrap: break-word; width: 100%; }
+    @media (max-width: 400px) { .word-box { min-height: 54px; padding: 12px 8px; } }
+    .word-hidden { color: #777; }
+    .word-revealed { color: #111; opacity: 1; transform: scale(1); }
+    .word-locked { color: #999; font-style: italic; opacity: 1; transform: scale(1); font-size: 18px; }
+    
+    .detective-role { color: #10b981; font-size: 14px; font-weight: 700; margin-top: 4px; text-align: center; line-height: 1.3; }
+    .jester-role { color: #f59e0b; font-size: 14px; font-weight: 700; margin-top: 4px; text-align: center; line-height: 1.3; }
+    .assassin-role { color: #8b5cf6; font-size: 14px; font-weight: 700; margin-top: 4px; text-align: center; line-height: 1.3; }
+    .king-role { color: #d97706; font-size: 14px; font-weight: 700; margin-top: 4px; text-align: center; line-height: 1.3; }
+    
+    .category-box { padding: 10px 12px; border-radius: 10px; background: #eef2ff; text-align: center; font-size: clamp(14px, 3.5vw, 16px); font-weight: 600; opacity: 0; transform: translateY(-10px); transition: opacity 0.25s, transform 0.25s; min-height: 44px; display: flex; align-items: center; justify-content: center; word-break: break-word; width: 100%; }
+    @media (max-width: 400px) { .category-box { min-height: 40px; padding: 8px 10px; } }
+    .category-shown { opacity: 1; transform: translateY(0); }
+    
+    .card-btn { padding: 12px 14px; border-radius: 999px; border: none; background: #e5e7eb; font-size: 15px; font-weight: 700; cursor: pointer; width: 100%; transition: all 0.2s; color: #333; margin-top: 4px; }
+    .card-btn:active { transform: scale(0.96); }
+    .card-btn.locked { background: #d1d5db; color: #6b7280; cursor: default; transform: none; opacity: 0.8; }
+    
+    .detective-hint, .assassin-hint, .jester-hint, .king-hint { font-size: 13px; font-weight: 600; margin-top: 6px; text-align: center; padding: 8px; border-radius: 8px; border: 1px solid; line-height: 1.4; opacity: 0; transform: translateY(10px); transition: opacity 0.25s, transform 0.25s; }
+    .detective-hint { color: #10b981; background: #f0fdf4; border-color: #bbf7d0; }
+    .assassin-hint { color: #8b5cf6; background: #f5f3ff; border-color: #ddd6fe; }
+    .jester-hint { color: #f59e0b; background: #fef3c7; border-color: #fde68a; }
+    .king-hint { color: #d97706; background: #fefce8; border-color: #fde047; }
+    .detective-hint.show, .assassin-hint.show, .jester-hint.show, .king-hint.show { opacity: 1; transform: translateY(0); }
+    
+    .status-section { margin-top: 28px; width: 100%; max-width: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .reveal-tracker { text-align: center; margin-bottom: 20px; font-size: clamp(16px, 4vw, 20px); font-weight: 800; color: #4f46e5; min-height: 32px; padding: 16px; background: #fff; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 100%; }
+    .first-player { text-align: center; padding: 20px 16px; background: linear-gradient(135deg, #4f46e5, #8b5cf6); color: white; border-radius: 18px; font-size: clamp(18px, 5vw, 24px); font-weight: 900; opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4); width: 100%; line-height: 1.3; margin-bottom: 16px; }
+    .first-player.show { opacity: 1; transform: translateY(0); }
+    .reveal-roles-btn { padding: 14px 24px; border: none; border-radius: 999px; background: linear-gradient(135deg, #f59e0b, #fbbf24); color: white; font-size: 16px; font-weight: 700; cursor: pointer; width: 100%; max-width: 300px; text-align: center; transition: transform 0.12s ease, box-shadow 0.2s; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25); margin-bottom: 16px; }
+    .reveal-roles-btn:hover { box-shadow: 0 6px 16px rgba(245, 158, 11, 0.3); }
+    .reveal-roles-btn:active { transform: scale(0.96); }
+    .reveal-roles-btn:disabled { background: linear-gradient(135deg, #9ca3af, #d1d5db); cursor: not-allowed; box-shadow: none; transform: none; }
+    
+    .king-announcement { text-align: center; padding: 20px 16px; background: linear-gradient(135deg, #eab308, #ca8a04); color: white; border-radius: 18px; font-size: clamp(16px, 4vw, 20px); font-weight: 700; opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; box-shadow: 0 6px 20px rgba(234, 179, 8, 0.4); width: 100%; line-height: 1.4; margin-bottom: 16px; }
+    .king-announcement.show { opacity: 1; transform: translateY(0); }
+    
+    .roles-reveal-box { text-align: center; padding: 0; background: #fff; color: #222; border-radius: 16px; font-size: clamp(16px, 4vw, 18px); font-weight: 600; opacity: 0; transform: translateY(20px); transition: opacity 0.5s, transform 0.5s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 100%; line-height: 1.4; margin-bottom: 16px; max-height: 0; overflow: hidden; border: 2px solid #4f46e5; }
+    .roles-reveal-box.show { opacity: 1; transform: translateY(0); max-height: 600px; transition: opacity 0.5s, transform 0.5s, max-height 0.5s; }
+    .roles-reveal-header { padding: 20px 16px; background: linear-gradient(135deg, #4f46e5, #6366f1); color: white; border-radius: 14px 14px 0 0; margin: 0; }
+    .roles-reveal-header h3 { margin: 0; font-size: clamp(18px, 4vw, 22px); font-weight: 800; }
+    .roles-reveal-content { padding: 20px; }
+    .role-list { text-align: left; margin: 0; padding: 0; list-style: none; }
+    .role-list li { margin-bottom: 12px; padding: 14px 16px; background: #f9fafb; border-radius: 12px; font-size: 15px; display: flex; justify-content: space-between; align-items: center; transition: transform 0.2s, box-shadow 0.2s; border-left: 4px solid #4f46e5; }
+    .role-list li:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .role-list .player-number { font-weight: 800; margin-right: 10px; color: #4f46e5; font-size: 16px; min-width: 80px; }
+    .role-list .role-name { font-weight: 600; padding: 6px 12px; border-radius: 8px; background: #eef2ff; color: #4f46e5; font-size: 14px; flex: 1; text-align: center; }
+    .role-list .civilian-role { background: #e0e7ff; color: #3b82f6; border-left-color: #3b82f6; }
+    .role-list .imposter-role { background: #fee2e2; color: #dc2626; border-left-color: #dc2626; }
+    .role-list .detective-role { background: #d1fae5; color: #10b981; border-left-color: #10b981; }
+    .role-list .jester-role { background: #fef3c7; color: #f59e0b; border-left-color: #f59e0b; }
+    .role-list .assassin-role { background: #f5f3ff; color: #8b5cf6; border-left-color: #8b5cf6; }
+    .role-list .king-role { background: #fefce8; color: #d97706; border-left-color: #eab308; }
+    .role-list .clueless-role { background: #ecfeff; color: #0891b2; border-left-color: #0891b2; }
+    .assassin-target { font-size: 12px; color: #8b5cf6; font-weight: 600; margin-top: 4px; background: rgba(139, 92, 246, 0.1); padding: 4px 8px; border-radius: 6px; display: inline-block; }
+    .king-badge { font-size: 12px; color: #d97706; font-weight: 600; margin-top: 4px; background: rgba(234, 179, 8, 0.1); padding: 4px 8px; border-radius: 6px; display: inline-block; }
+    .clueless-word-display { font-size: 12px; color: #0891b2; font-weight: 600; margin-top: 4px; background: rgba(6, 182, 212, 0.1); padding: 4px 8px; border-radius: 6px; display: inline-block; }
+    .footer-note { margin-top: 24px; text-align: center; font-size: 13px; color: #666; padding: 0 12px; line-height: 1.5; max-width: 500px; width: 100%; }
   </style>
 </head>
 
@@ -1718,96 +608,52 @@
             <li><strong>Imposters:</strong> Some players are imposters - they DON'T know the secret word!</li>
             <li><strong>Discussion:</strong> Players discuss to figure out who the imposters are by saying a word related to the secret word they got</li>
             <li><strong>Voting:</strong> Vote to eliminate suspected imposters</li>
-            <li><strong>Winning:</strong> Civilians win if all imposters are eliminated. Imposters win if they survive. Jester wins if he/she gets voted out. Assassin wins if their target gets voted out. Pregnant gets 2 votes.</li>
+            <li><strong>Winning:</strong> Civilians win if all imposters are eliminated. Imposters win if they survive. Jester wins if he/she gets voted out. Assassin wins if their target gets voted out. King gets 2 votes.</li>
           </ol>
         </div>
         
         <div class="modal-section">
           <h3>Cards</h3>
           <div class="role-grid">
-            
-            <div class="role-card civilian">
-              <h4>
-                <span class="role-icon">C</span>
-                Civilian
-              </h4>
-              <p>You know the secret word and its category. Your goal is to identify and vote out the imposters.</p>
-              <div class="goal">Goal: Eliminate imposters</div>
-            </div>
-
-            <div class="role-card imposter">
-              <h4>
-                <span class="role-icon">I</span>
-                Imposter
-              </h4>
-              <p>You DON'T know the secret word! You only see the category. Pretend you know the word to blend in.</p>
-              <div class="goal">Goal: Don't get eliminated</div>
-            </div>
-
-            <div class="role-card detective">
-              <h4>
-                <span class="role-icon">D</span>
-                Detective
-              </h4>
-              <p>You know the secret word. When you reveal your card, you get to peek at one random player's role.</p>
-              <div class="goal">Goal: Help civilians find imposters</div>
-            </div>
-
-            <div class="role-card jester">
-              <h4>
-                <span class="role-icon">J</span>
-                Jester
-              </h4>
-              <p>You know the secret word. Your goal is to get voted out by acting suspiciously without being obvious.</p>
-              <div class="goal">Goal: Get voted out during discussion</div>
-            </div>
-
-            <div class="role-card assassin">
-              <h4>
-                <span class="role-icon">A</span>
-                Assassin
-              </h4>
-              <p>You know the secret word. You're assigned a specific player to eliminate. Make sure THEY get voted out!</p>
-              <div class="goal">Goal: Get your target player voted out</div>
-            </div>
-
-            <div class="role-card pregnant">
-              <h4>
-                <span class="role-icon">P</span>
-                Pregnant
-              </h4>
-              <p>You get 2 votes! This role can stack with any other role. Everyone will know who has the pregnant role.</p>
-              <div class="goal">Goal: Use your extra vote wisely</div>
-            </div>
-
-            <div class="role-card clueless">
-              <h4>
-                <span class="role-icon">?</span>
-                Clueless
-              </h4>
-              <p>You receive a <strong>wrong</strong> word from the same category. You don't know you are clueless; your card looks just like a civilian's.</p>
-              <div class="goal">Goal: Figure out you are clueless!</div>
-            </div>
-
+            <div class="role-card civilian"><h4><span class="role-icon">C</span>Civilian</h4><p>You know the secret word. Goal: Eliminate imposters.</p><div class="goal">Goal: Eliminate imposters</div></div>
+            <div class="role-card imposter"><h4><span class="role-icon">I</span>Imposter</h4><p>You DON'T know the secret word! Pretend you know it.</p><div class="goal">Goal: Don't get eliminated</div></div>
+            <div class="role-card detective"><h4><span class="role-icon">D</span>Detective</h4><p>You can peek at one random player's role.</p><div class="goal">Goal: Help civilians</div></div>
+            <div class="role-card jester"><h4><span class="role-icon">J</span>Jester</h4><p>You want to get voted out.</p><div class="goal">Goal: Get voted out</div></div>
+            <div class="role-card assassin"><h4><span class="role-icon">A</span>Assassin</h4><p>Eliminate your target.</p><div class="goal">Goal: Get target voted out</div></div>
+            <div class="role-card king"><h4><span class="role-icon">K</span>King</h4><p>You get 2 votes.</p><div class="goal">Goal: Use extra vote wisely</div></div>
+            <div class="role-card clueless"><h4><span class="role-icon">?</span>Clueless</h4><p>You get the wrong word.</p><div class="goal">Goal: Figure out you are clueless</div></div>
           </div>
-        </div>
-
-        <div class="modal-section">
-          <h3>Gameplay</h3>
-          <ol>
-            <li><strong>Preparation:</strong> Host sets up the game with desired options</li>
-            <li><strong>Card Distribution:</strong> Each player views their card ONCE on the device</li>
-            <li><strong>Pregnant Announcement:</strong> After all cards are viewed, the pregnant player is announced</li>
-            <li><strong>Discussion:</strong> Players discuss - imposters must bluff convincingly</li>
-            <li><strong>Questioning:</strong> Ask about the secret word to find inconsistencies</li>
-            <li><strong>Voting:</strong> Vote for who you think is an imposter (Pregnant player gets 2 votes)</li>
-            <li><strong>Reveal:</strong> Eliminated player reveals their role</li>
-            <li><strong>Repeat:</strong> Continue until either side wins</li>
-          </ol>
         </div>
 
         leoniscool.com
 
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="createSubjectOverlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h2>Create Custom Subject</h2>
+        <button class="close-btn" id="closeCreateSubjectBtn">&times;</button>
+      </div>
+      <div class="modal-content">
+        <div class="form-group">
+          <label class="form-label" for="newSubjectName">Subject Name</label>
+          <input type="text" id="newSubjectName" class="form-input" placeholder="e.g. My Custom Game">
+        </div>
+        
+        <div id="categoriesContainer">
+          </div>
+
+        <button class="add-category-btn" id="addCategoryBtn">
+          <span>+</span> Add Category
+        </button>
+
+        <div class="modal-footer">
+          <button class="btn-secondary" id="cancelCreateSubjectBtn">Cancel</button>
+          <button class="btn-primary" id="saveSubjectBtn">Save Subject</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1827,8 +673,8 @@
       
       <div class="custom-subject-container">
         <div class="custom-subject-input">
-          <input type="text" id="customSubjectInput" placeholder="Enter any word or phrase...">
-          <button class="custom-subject-btn" id="customSubjectBtn">Use Custom</button>
+          <input type="text" id="customSubjectInput" placeholder="Quick single word/phrase...">
+          <button class="custom-subject-btn" id="customSubjectBtn">Use Once</button>
         </div>
       </div>
     </div>
@@ -1836,17 +682,13 @@
 
   <div class="player-names-section" id="playerNamesSection">
     <h2>Customize Player Names</h2>
-    
     <div class="player-names-header">
       <h3>Players (Click to Edit)</h3>
       <div class="player-names-buttons">
         <button class="reset-names-btn" id="resetNamesBtn">Reset</button>
       </div>
     </div>
-    
-    <div class="player-names-list" id="playerNamesList">
-      </div>
-    
+    <div class="player-names-list" id="playerNamesList"></div>
     <div class="player-count-controls">
       <div class="player-count-label">Number of Players</div>
       <div class="count-buttons">
@@ -1855,76 +697,90 @@
         <button class="count-btn" id="addPlayerBtn">+</button>
       </div>
     </div>
-    
     <button class="toggle-player-names" id="hidePlayerNamesBtn">Hide Player Names</button>
   </div>
 
   <div class="controls">
-    <div class="slider-container">
-      <div class="slider-label">
-        Players
-        <span id="playersValue">3</span>
+    
+    <div class="sliders-row">
+      <div class="slider-container">
+        <div class="slider-label">
+          Players
+          <span id="playersValue">3</span>
+        </div>
+        <div class="slider-wrapper">
+          <input type="range" id="playerSlider" class="slider" min="3" max="20" value="3">
+        </div>
+        <div class="slider-minmax">
+          <span>3</span>
+          <span>20</span>
+        </div>
       </div>
-      <div class="slider-wrapper">
-        <input type="range" id="playerSlider" class="slider" min="3" max="20" value="3">
-      </div>
-      <div class="slider-minmax">
-        <span>3</span>
-        <span>20</span>
+
+      <div class="slider-container">
+        <div class="slider-label">
+          Imposters
+          <span id="impostersValue">1</span>
+        </div>
+        <div class="slider-wrapper">
+          <input type="range" id="imposterSlider" class="slider" min="1" max="10" value="1">
+        </div>
+        <div class="slider-minmax">
+          <span>1</span>
+          <span>10</span>
+        </div>
       </div>
     </div>
 
-    <div class="slider-container">
-      <div class="slider-label">
-        Imposters
-        <span id="impostersValue">1</span>
+    <div class="roles-section">
+      <h3>Special Roles</h3>
+      
+      <div class="role-toggle randomize-toggle full-width">
+        <label>
+          <input id="randomizeToggle" type="checkbox">
+          Randomize Roles
+        </label>
       </div>
-      <div class="slider-wrapper">
-        <input type="range" id="imposterSlider" class="slider" min="1" max="10" value="1">
+
+      <div class="roles-grid">
+        <div class="role-pill detective-toggle" id="detectiveContainer">
+          <label>
+            <input id="detectiveToggle" type="checkbox">
+            Detective
+          </label>
+        </div>
+
+        <div class="role-pill jester-toggle" id="jesterContainer">
+          <label>
+            <input id="jesterToggle" type="checkbox">
+            Jester
+          </label>
+        </div>
+
+        <div class="role-pill assassin-toggle" id="assassinContainer">
+          <label>
+            <input id="assassinToggle" type="checkbox">
+            Assassin
+          </label>
+        </div>
+
+        <div class="role-pill king-toggle" id="kingContainer">
+          <label>
+            <input id="kingToggle" type="checkbox">
+            King
+          </label>
+        </div>
+
+        <div class="role-pill clueless-toggle" id="cluelessContainer">
+          <label>
+            <input id="cluelessToggle" type="checkbox">
+            Clueless
+          </label>
+        </div>
       </div>
-      <div class="slider-minmax">
-        <span>1</span>
-        <span>10</span>
-      </div>
-    </div>
-
-    <div class="role-toggle detective-toggle">
-      <label>
-        <input id="detectiveToggle" type="checkbox">
-        Detective
-      </label>
-    </div>
-
-    <div class="role-toggle jester-toggle">
-      <label>
-        <input id="jesterToggle" type="checkbox">
-        Jester
-      </label>
-    </div>
-
-    <div class="role-toggle assassin-toggle">
-      <label>
-        <input id="assassinToggle" type="checkbox">
-        Assassin
-      </label>
-    </div>
-
-    <div class="role-toggle pregnant-toggle">
-      <label>
-        <input id="pregnantToggle" type="checkbox">
-        Pregnant
-      </label>
-    </div>
-
-    <div class="role-toggle clueless-toggle">
-      <label>
-        <input id="cluelessToggle" type="checkbox">
-        Clueless
-      </label>
     </div>
 
     <button id="generateBtn" class="btn" disabled>Deal Cards</button>
-    
     <button class="toggle-player-names" id="showPlayerNamesBtn">Customize Player Names</button>
   </div>
 
@@ -1934,7 +790,7 @@
   
   <div class="status-section">
     <div id="revealTracker" class="reveal-tracker"></div>
-    <div id="pregnantAnnouncement" class="pregnant-announcement"></div>
+    <div id="kingAnnouncement" class="king-announcement"></div>
     <div id="firstPlayer" class="first-player"></div>
     <button id="revealRolesBtn" class="reveal-roles-btn" style="display: none;">Reveal All Roles</button>
     <div id="rolesRevealBox" class="roles-reveal-box"></div>
@@ -1963,13 +819,16 @@ let secretItem = ""; // Store secret item globally for detective
 let secretCategory = ""; // Store secret category globally for detective
 let assassinTarget = null; // Store assassin's target
 let playerNames = []; // Store custom player names
-let pregnantPlayer = null; // Store which player is pregnant (index)
+let kingPlayer = null; // Store which player is king (index)
 let cluelessWord = ""; // Store the wrong word given to the clueless player
 
 // NEW: State for detective interaction
 let isDetectiveChoosing = false;
 let activeDetectiveCardElement = null;
 let activeDetectiveHintElement = null;
+
+// NEW: Saved Custom Subjects
+let savedCustomSubjects = {};
 
 /* ===== ELEMENTS ===== */
 const cardsContainer = document.getElementById("cardsContainer");
@@ -1987,7 +846,7 @@ const selectedSubjectName = document.getElementById("selectedSubjectName");
 const changeSubjectBtn = document.getElementById("changeSubjectBtn");
 const customSubjectInput = document.getElementById("customSubjectInput");
 const customSubjectBtn = document.getElementById("customSubjectBtn");
-const pregnantAnnouncement = document.getElementById("pregnantAnnouncement");
+const kingAnnouncement = document.getElementById("kingAnnouncement");
 
 // Slider elements
 const playerSlider = document.getElementById("playerSlider");
@@ -2008,16 +867,33 @@ const removePlayerBtn = document.getElementById("removePlayerBtn");
 const playerCountDisplay = document.getElementById("playerCountDisplay");
 
 // Role toggle elements
+const randomizeToggle = document.getElementById("randomizeToggle");
 const detectiveToggle = document.getElementById("detectiveToggle");
 const jesterToggle = document.getElementById("jesterToggle");
 const assassinToggle = document.getElementById("assassinToggle");
-const pregnantToggle = document.getElementById("pregnantToggle");
+const kingToggle = document.getElementById("kingToggle");
 const cluelessToggle = document.getElementById("cluelessToggle");
+
+// Containers for visual disabling
+const detectiveContainer = document.getElementById("detectiveContainer");
+const jesterContainer = document.getElementById("jesterContainer");
+const assassinContainer = document.getElementById("assassinContainer");
+const kingContainer = document.getElementById("kingContainer");
+const cluelessContainer = document.getElementById("cluelessContainer");
 
 // Modal elements
 const infoBtn = document.getElementById("infoBtn");
 const modalOverlay = document.getElementById("modalOverlay");
 const closeModalBtn = document.getElementById("closeModalBtn");
+
+// Create Subject Modal Elements
+const createSubjectOverlay = document.getElementById("createSubjectOverlay");
+const closeCreateSubjectBtn = document.getElementById("closeCreateSubjectBtn");
+const cancelCreateSubjectBtn = document.getElementById("cancelCreateSubjectBtn");
+const saveSubjectBtn = document.getElementById("saveSubjectBtn");
+const newSubjectNameInput = document.getElementById("newSubjectName");
+const categoriesContainer = document.getElementById("categoriesContainer");
+const addCategoryBtn = document.getElementById("addCategoryBtn");
 
 /* ===== DEFAULT SUBJECTS ===== */
 const defaultSubjects = {
@@ -2046,164 +922,44 @@ const defaultSubjects = {
   },
   
   "Physics": {
-    kinematics: [
-      "Displacement","Velocity","Acceleration","Free Fall","Projectile Motion","Kinematic Equations","Constant Acceleration",
-      "Position-Time Graph","Velocity-Time Graph"
-    ],
-
-    forces: [
-      "Newton's First Law","Newton's Second Law","Newton's Third Law","Force","Mass","Weight","Friction","Normal Force",
-      "Tension","Net Force","Inertia","Equilibrium","Free Body Diagram","Air Resistance", "F=ma"
-    ],
-
-    energy: [
-      "Kinetic Energy","Potential Energy","Conservation of Energy","Work","Power","Mechanical Energy","Thermal Energy",
-      "Energy Transfer","Work-Energy Theorem","Efficiency","Gravitational Energy","Spring Energy","Elastic Energy",
-      "Hooke's Law","Simple Machines","Energy Loss"
-    ],
-
-    momentum: [
-      "Linear Momentum","Impulse","Conservation of Momentum","Elastic Collision","Inelastic Collision","Center of Mass",
-      "Momentum Transfer","Recoil","Explosion","Momentum Vector","Elastic Bounce","Inelastic Bounce","Perfectly Inelastic",
-      "Angular Momentum"
-    ],
-
-    circular: [
-      "Centripetal Force","Centripetal Acceleration","mv^2/r", "v^2/r"
-    ],
-
-    fluids: [
-      "Density","Pressure","Buoyancy","Archimedes' Principle","Bernoulli's Principle","Continuity Equation","Fluid Flow",
-      "Laminar Flow","Viscosity","Hydraulic Lift","Pascal's Law","Hydrostatic Pressure","Streamlines","Flow Rate","Turbulent Flow"
-    ],
-
-    rotation: [
-      "Angular Acceleration","Angular Momentum","Inertia","Center of Mass", "Rotational Kinetic Energy", "Rotational Kinematics"
-    ],
-
-    shm: [
-      "Periodic Motion","Frequency","Amplitude","Phase","Restoring Force","Spring Oscillation","Pendulum Oscillation","Resonance"
-    ],
-
-    thermo: [
-      "Temperature","Heat Transfer","Conduction","Convection","Radiation","Internal Energy","Specific Heat",
-      "Thermal Equilibrium"
-    ],
-
-    electricity: [
-      "Charge","Electric Field","Voltage","Current","Resistance","Ohm's Law","Power","Series Circuit",
-      "Parallel Circuit","Circuit Diagram"
-    ],
-
-    gravity: [
-      "Gravitational Constant","Gravitational Force","mg","Kepler's 3rd law"
-    ]
+    kinematics: ["Displacement","Velocity","Acceleration","Free Fall","Projectile Motion","Kinematic Equations","Constant Acceleration","Position-Time Graph","Velocity-Time Graph"],
+    forces: ["Newton's First Law","Newton's Second Law","Newton's Third Law","Force","Mass","Weight","Friction","Normal Force","Tension","Net Force","Inertia","Equilibrium","Free Body Diagram","Air Resistance", "F=ma"],
+    energy: ["Kinetic Energy","Potential Energy","Conservation of Energy","Work","Power","Mechanical Energy","Thermal Energy","Energy Transfer","Work-Energy Theorem","Efficiency","Gravitational Energy","Spring Energy","Elastic Energy","Hooke's Law","Simple Machines","Energy Loss"],
+    momentum: ["Linear Momentum","Impulse","Conservation of Momentum","Elastic Collision","Inelastic Collision","Center of Mass","Momentum Transfer","Recoil","Explosion","Momentum Vector","Elastic Bounce","Inelastic Bounce","Perfectly Inelastic","Angular Momentum"],
+    circular: ["Centripetal Force","Centripetal Acceleration","mv^2/r", "v^2/r"],
+    fluids: ["Density","Pressure","Buoyancy","Archimedes' Principle","Bernoulli's Principle","Continuity Equation","Fluid Flow","Laminar Flow","Viscosity","Hydraulic Lift","Pascal's Law","Hydrostatic Pressure","Streamlines","Flow Rate","Turbulent Flow"],
+    rotation: ["Angular Acceleration","Angular Momentum","Inertia","Center of Mass", "Rotational Kinetic Energy", "Rotational Kinematics"],
+    shm: ["Periodic Motion","Frequency","Amplitude","Phase","Restoring Force","Spring Oscillation","Pendulum Oscillation","Resonance"],
+    thermo: ["Temperature","Heat Transfer","Conduction","Convection","Radiation","Internal Energy","Specific Heat","Thermal Equilibrium"],
+    electricity: ["Charge","Electric Field","Voltage","Current","Resistance","Ohm's Law","Power","Series Circuit","Parallel Circuit","Circuit Diagram"],
+    gravity: ["Gravitational Constant","Gravitational Force","mg","Kepler's 3rd law"]
   },
   
   "Math": {
-    algebra: [
-      "Variable","Expression","Equation","Inequality","Linear Equation",
-      "Quadratic Equation","Polynomial","Factoring","Completing the Square",
-      "Exponential Function","Logarithmic Function","Rational Expression",
-      "System of Equations","Matrix","Vector","Function","Domain","Range"
-    ],
-
-    geometry: [
-      "Point","Line","Plane","Angle","Congruent","Similarity","Triangle",
-      "Pythagorean Theorem","Circle","Radius","Diameter","Chord","Arc",
-      "Central Angle","Inscribed Angle","Area","Perimeter","Volume","Surface Area"
-    ],
-
-    trigonometry: [
-      "Sine","Cosine","Tangent","Unit Circle","Radians","Degrees",
-      "Pythagorean Identity","Law of Sines","Law of Cosines","Trigonometric Graphs",
-      "Amplitude","Period","Phase Shift","Inverse Trig Function"
-    ],
-
-    precalculus: [
-      "Sequence","Series","Arithmetic Sequence","Geometric Sequence",
-      "Binomial Theorem","Polynomial Division","Rational Function",
-      "Asymptote","Complex Number","Imaginary Unit"
-    ],
-
-    statistics: [
-      "Mean","Median","Mode","Range","Standard Deviation","Variance",
-      "Probability","Combination","Permutation","Normal Distribution",
-      "Outlier","Correlation"
-    ]
+    algebra: ["Variable","Expression","Equation","Inequality","Linear Equation","Quadratic Equation","Polynomial","Factoring","Completing the Square","Exponential Function","Logarithmic Function","Rational Expression","System of Equations","Matrix","Vector","Function","Domain","Range"],
+    geometry: ["Point","Line","Plane","Angle","Congruent","Similarity","Triangle","Pythagorean Theorem","Circle","Radius","Diameter","Chord","Arc","Central Angle","Inscribed Angle","Area","Perimeter","Volume","Surface Area"],
+    trigonometry: ["Sine","Cosine","Tangent","Unit Circle","Radians","Degrees","Pythagorean Identity","Law of Sines","Law of Cosines","Trigonometric Graphs","Amplitude","Period","Phase Shift","Inverse Trig Function"],
+    precalculus: ["Sequence","Series","Arithmetic Sequence","Geometric Sequence","Binomial Theorem","Polynomial Division","Rational Function","Asymptote","Complex Number","Imaginary Unit"],
+    statistics: ["Mean","Median","Mode","Range","Standard Deviation","Variance","Probability","Combination","Permutation","Normal Distribution","Outlier","Correlation"]
   },
 
   "Calculus": {
-    limits: [
-      "Limit","Continuity","One-Sided Limit","Infinite Limit","Limit Laws","Indeterminate Form",
-      "Removable Discontinuity","Jump Discontinuity","Vertical Asymptote","Horizontal Asymptote",
-      "Squeeze Theorem","L'Hôpital's Rule"
-    ],
-
-    derivatives: [
-      "Derivative","Differentiability","Tangent Line","Instantaneous Rate","Power Rule","Sum Rule","Difference Rule",
-      "Product Rule","Quotient Rule","Chain Rule","Implicit Differentiation","Higher Derivative","Second Derivative",
-      "Third Derivative","Inverse Function","Logarithmic Differentiation","Exponential Derivative","Trig Derivative"
-    ],
-
-    applicationsOfDerivatives: [
-      "Critical Point","Local Maximum","Local Minimum","First Derivative Test","Second Derivative Test",
-      "Inflection Point","Concave Up","Concave Down","Optimization","Related Rates",
-      "Velocity Function","Acceleration Function","Motion on a Line","Mean Value Theorem"
-    ],
-
-    integrals: [
-      "Antiderivative","Indefinite Integral","Definite Integral","Constant of Integration","Net Change",
-      "Area Under Curve","Riemann Sum","Trapezoidal Rule","Accumulation Function","Average Value",
-      "U-Substitution"
-    ],
-
-    applicationsOfIntegrals: [
-      "Differential Equation","Separation of Variables","Initial Condition","Rate of Change",
-      "Motion with Acceleration","Distance and Displacement","Growth and Decay"
-    ],
-
-    theorems: [
-      "Fundamental Theorem of Calculus","Mean Value Theorem","Rolle's Theorem"
-    ]
+    limits: ["Limit","Continuity","One-Sided Limit","Infinite Limit","Limit Laws","Indeterminate Form","Removable Discontinuity","Jump Discontinuity","Vertical Asymptote","Horizontal Asymptote","Squeeze Theorem","L'Hôpital's Rule"],
+    derivatives: ["Derivative","Differentiability","Tangent Line","Instantaneous Rate","Power Rule","Sum Rule","Difference Rule","Product Rule","Quotient Rule","Chain Rule","Implicit Differentiation","Higher Derivative","Second Derivative","Third Derivative","Inverse Function","Logarithmic Differentiation","Exponential Derivative","Trig Derivative"],
+    applicationsOfDerivatives: ["Critical Point","Local Maximum","Local Minimum","First Derivative Test","Second Derivative Test","Inflection Point","Concave Up","Concave Down","Optimization","Related Rates","Velocity Function","Acceleration Function","Motion on a Line","Mean Value Theorem"],
+    integrals: ["Antiderivative","Indefinite Integral","Definite Integral","Constant of Integration","Net Change","Area Under Curve","Riemann Sum","Trapezoidal Rule","Accumulation Function","Average Value","U-Substitution"],
+    applicationsOfIntegrals: ["Differential Equation","Separation of Variables","Initial Condition","Rate of Change","Motion with Acceleration","Distance and Displacement","Growth and Decay"],
+    theorems: ["Fundamental Theorem of Calculus","Mean Value Theorem","Rolle's Theorem"]
   },
   
   "Computer Science": {
-    programmingBasics: [
-      "Variable","Constant","Data Type","Integer","Float","Boolean","String",
-      "Expression","Statement","Comment","Indentation"
-    ],
-
-    basicCommands: [
-      "If Statement","Else Statement","Else If","Comparison Operator","Logical Operator",
-      "For Loop","While Loop","Break","Continue","Iteration","Recursion"
-    ],
-
-    functions: [
-      "Function","Parameter","Argument","Return Value","Scope","Local Variable",
-      "Global Variable","Function Call","Function Definition"
-    ],
-
-    dataStructures: [
-      "Array","List","Tuple","Dictionary","Object","Stack","Queue","Set",
-      "Linked List","Tree","Binary Tree","Graph","Hash Table","Pointer","Node"
-    ],
-
-    algorithms: [
-      "Searching","Linear Search","Binary Search","Sorting","Bubble Sort",
-      "Selection Sort","Insertion Sort","Merge Sort","Quick Sort",
-      "Time Complexity","Space Complexity","Big O Notation","Recursion","Divide and Conquer"
-    ],
-
-    ai: [
-      "Machine Learning","Neural Network","Training","Testing","Dataset",
-      "Supervised Learning","Unsupervised Learning","Classification",
-      "Regression","Accuracy","Precision","Recall","Overfitting","Underfitting"
-    ],
-    
-    languages: [
-      "Python","Java","JavaScript","C","C++","C#","Scratch","SQL","HTML","CSS"
-    ]
+    programmingBasics: ["Variable","Constant","Data Type","Integer","Float","Boolean","String","Expression","Statement","Comment","Indentation"],
+    basicCommands: ["If Statement","Else Statement","Else If","Comparison Operator","Logical Operator","For Loop","While Loop","Break","Continue","Iteration","Recursion"],
+    functions: ["Function","Parameter","Argument","Return Value","Scope","Local Variable","Global Variable","Function Call","Function Definition"],
+    dataStructures: ["Array","List","Tuple","Dictionary","Object","Stack","Queue","Set","Linked List","Tree","Binary Tree","Graph","Hash Table","Pointer","Node"],
+    algorithms: ["Searching","Linear Search","Binary Search","Sorting","Bubble Sort","Selection Sort","Insertion Sort","Merge Sort","Quick Sort","Time Complexity","Space Complexity","Big O Notation","Recursion","Divide and Conquer"],
+    ai: ["Machine Learning","Neural Network","Training","Testing","Dataset","Supervised Learning","Unsupervised Learning","Classification","Regression","Accuracy","Precision","Recall","Overfitting","Underfitting"],
+    languages: ["Python","Java","JavaScript","C","C++","C#","Scratch","SQL","HTML","CSS"]
   },
 
   "Animals": {
@@ -2243,257 +999,36 @@ const defaultSubjects = {
   },
   
   "Minecraft": {
-  
-  mobs: [
-    "Villager","Cow","Pig","Chicken","Sheep","Wolf","Horse","Cat","Fox","Bee","Rabbit","Parrot","Llama",
-    "Zombie","Skeleton","Creeper","Spider","Enderman","Slime","Witch","Phantom","Pillager","Blaze","Ghast",
-    "Piglin","Hoglin","Guardian","Evoker","Vex","Warden","Ender Dragon","Wither"
-  ],
+    mobs: ["Villager","Cow","Pig","Chicken","Sheep","Wolf","Horse","Cat","Fox","Bee","Rabbit","Parrot","Llama","Zombie","Skeleton","Creeper","Spider","Enderman","Slime","Witch","Phantom","Pillager","Blaze","Ghast","Piglin","Hoglin","Guardian","Evoker","Vex","Warden","Ender Dragon","Wither"],
+    blocks: ["Stone","Dirt","Sand","Gravel","Wood","Leaves","Glass","Obsidian","Clay","Bricks","Netherrack","End Stone","Basalt","Deepslate","Bedrock"],
+    resources: ["Coal","Iron","Gold","Diamond","Emerald","Redstone","Lapis","Copper","Nether Quartz","Ancient Debris"],
+    items: ["Sword","Axe","Pickaxe","Shovel","Bow","Shield","Trident","Fishing Rod","Compss","Clock","Shears","Map"],
+    food: ["Bread","Steak","Cooked Porkchop","Cooked Chicken","Baked Potato","Carrot","Apple","Melon","Chorus Fruit","Golden Apple","Pumpkin Pie","Honey Bottle"],
+    structures: ["Village","Temple","Stronghold","Mineshaft","Ocean Monument","Ruined Portal","Nether Fortress","Bastion","End City","Ancient City"],
+    biomes: ["Plains","Forest","Taiga","Jungle","Desert","Savanna","Swamp","Mountains","Snowy Biome","Ocean","Badlands","Mushroom Biome","Nether","End"],
+    toolsAndGear: ["Pickaxe","Sword","Axe","Hoe","Shovel","Armor","Helmet","Chestplate","Leggings","Boots","Shield","Crossbow"],
+    magicAndPotions: ["Enchanting Table","Potion of Healing","Potion of Strength","Potion of Swiftness","Potion of Fire Resistance","Potion of Regeneration","Potion of Invisibility","Potion of Slow Falling"]
+  },
 
-  blocks: [
-    "Stone","Dirt","Sand","Gravel","Wood","Leaves","Glass","Obsidian","Clay","Bricks","Netherrack","End Stone",
-    "Basalt","Deepslate","Bedrock"
-  ],
+  "Geometry Dash": {
+    levels: ["Stereo Madness","Back on Track","Polargeist","Dry Out","Base After Base","Can't Let Go","Jumper","Time Machine","Cycles","xStep","Clutterfunk","Theory of Everything","Electroman Adventures","Geometrical Dominator","Hexagon Force","Blast Processing","Electrodynamix","Clubstep","Theory of Everything 2","Deadlocked","ORBIT","LIMBO","Bloodbath","Top 10","Bloodshower","Purpular Rectanglisi (mer green)","Sonic Wave","Change of Scene","Absolute Garbage","HOW","WHAT","Grass","Nagatabi","Sunrise","Night City"],
+    gamemodes: ["Cube","Robot","Ship","Ball","Wave","Spider","UFO","Swing Copter"],
+    structures: ["Ekirby8 Tower","Clubstep Monster","Triple Spike"]
+  },
 
-  resources: [
-    "Coal","Iron","Gold","Diamond","Emerald","Redstone","Lapis","Copper","Nether Quartz","Ancient Debris"
-  ],
+  "Objects": {
+    objects: ["Chair","Table","Sofa","Bed","Lamp","Mirror","Clock","Pillow","Blanket","Curtain","Candle","TV","Remote","Shelf","Plate","Cup","Fork","Knife","Spoon","Pan","Pot","Bottle","Microwave","Fridge","Toaster","Phone","Laptop","Tablet","Headphones","Charger","Mouse","Keyboard","Camera","Smartwatch","Speaker","Notebook","Pencil","Pen","Eraser","Ruler","Backpack","Calculator","Binder","Shirt","Pants","Jacket","Hat","Socks","Shoes","Gloves","Belt","Hammer","Screwdriver","Wrench","Pliers","Drill","Saw","Tape Measure","Car","Bike","Bus","Train","Scooter","Motorcycle","Airplane","Boat","Wallet","Keys","Water Bottle","Backpack","Trash Can","Umbrella","Broom","Mop","Vacuum","Toothbrush","Toothpaste","Soap","Shampoo","Comb","Hairdryer","Sunglasses","Watch","Notebook","Stapler","Paperclip","Highlighter","Glue","Scissors"]
+  },
 
-  items: [
-    "Sword","Axe","Pickaxe","Shovel","Bow","Shield","Trident","Fishing Rod","Compss","Clock","Shears","Map"
-  ],
+  "School Food": {
+    lunch: ["Pizza","Chicken Waffles","Salad","Pasta","Burrito","Quesadilla","Rice Bowl","Grilled Cheese","Hamburger"],
+    sides: ["Apple Sauce","Craisins", "Milk", "Carrots"],
+    brunch: ["Granola Bar", "Yogurt", "Pancake", "Muffin", "Burrito", "Bagel"]
+  },
 
-  food: [
-    "Bread","Steak","Cooked Porkchop","Cooked Chicken","Baked Potato","Carrot","Apple","Melon","Chorus Fruit",
-    "Golden Apple","Pumpkin Pie","Honey Bottle"
-  ],
-
-  structures: [
-    "Village","Temple","Stronghold","Mineshaft","Ocean Monument","Ruined Portal","Nether Fortress","Bastion",
-    "End City","Ancient City"
-  ],
-
-  biomes: [
-    "Plains","Forest","Taiga","Jungle","Desert","Savanna","Swamp","Mountains","Snowy Biome","Ocean","Badlands",
-    "Mushroom Biome","Nether","End"
-  ],
-
-  toolsAndGear: [
-    "Pickaxe","Sword","Axe","Hoe","Shovel","Armor","Helmet","Chestplate","Leggings","Boots","Shield","Crossbow"
-  ],
-
-  magicAndPotions: [
-    "Enchanting Table","Potion of Healing","Potion of Strength","Potion of Swiftness","Potion of Fire Resistance",
-    "Potion of Regeneration","Potion of Invisibility","Potion of Slow Falling"
-  ]
-},
-
-"Geometry Dash": {
-  levels: [
-    "Stereo Madness","Back on Track","Polargeist","Dry Out","Base After Base","Can't Let Go","Jumper",
-    "Time Machine","Cycles","xStep","Clutterfunk","Theory of Everything","Electroman Adventures",
-    "Geometrical Dominator","Hexagon Force","Blast Processing","Electrodynamix","Clubstep","Theory of Everything 2",
-    "Deadlocked","ORBIT","LIMBO","Bloodbath","Top 10","Bloodshower","Purpular Rectanglisi (mer green)","Sonic Wave",
-    "Change of Scene","Absolute Garbage","HOW","WHAT","Grass","Nagatabi","Sunrise","Night City"
-  ],
-
-  gamemodes: [
-    "Cube","Robot","Ship","Ball","Wave","Spider","UFO","Swing Copter"
-  ],
-
-  structures: [
-    "Ekirby8 Tower","Clubstep Monster","Triple Spike"
-  ]
-},
-
-"Objects": {
-  objects: [
-    "Chair","Table","Sofa","Bed","Lamp","Mirror","Clock","Pillow","Blanket",
-    "Curtain","Candle","TV","Remote","Shelf","Plate","Cup","Fork","Knife",
-    "Spoon","Pan","Pot","Bottle","Microwave","Fridge","Toaster","Phone",
-    "Laptop","Tablet","Headphones","Charger","Mouse","Keyboard","Camera",
-    "Smartwatch","Speaker","Notebook","Pencil","Pen","Eraser","Ruler",
-    "Backpack","Calculator","Binder","Shirt","Pants","Jacket","Hat","Socks",
-    "Shoes","Gloves","Belt","Hammer","Screwdriver","Wrench","Pliers","Drill",
-    "Saw","Tape Measure","Car","Bike","Bus","Train","Scooter","Motorcycle",
-    "Airplane","Boat","Wallet","Keys","Water Bottle","Backpack","Trash Can",
-    "Umbrella","Broom","Mop","Vacuum","Toothbrush","Toothpaste","Soap",
-    "Shampoo","Comb","Hairdryer","Sunglasses","Watch","Notebook","Stapler",
-    "Paperclip","Highlighter","Glue","Scissors"
-  ]
-},
-
-"Environmental Science": {
-
-  ecology: [
-    "Ecosystem","Biome","Habitat","Niche","Biodiversity","Species Richness","Species Evenness","Keystone Species",
-    "Indicator Species","Invasive Species","Native Species","Endangered Species","Extinction","Speciation",
-    
-    "Population Growth","Carrying Capacity","Limiting Factor","Density-Dependent Factor","Density-Independent Factor",
-    "r-Selected Species","K-Selected Species","Survivorship Curve","Population Dynamics","Growth Rate","Logistic Growth",
-    
-    "Producer","Consumer","Herbivore","Carnivore","Omnivore","Detritivore","Decomposer","Trophic Level","Food Web",
-    "Primary Productivity","Gross Primary Productivity","Net Primary Productivity"
-  ],
-
-  cycles: [
-    "Biogeochemical Cycle","Water Cycle","Carbon Cycle","Nitrogen Cycle","Phosphorus Cycle","Sulfur Cycle",
-    "Evaporation","Condensation","Precipitation","Transpiration","Nitrogen Fixation","Assimilation","Respiration"
-  ],
-
-  atmosphereClimate: [
-    "Climate","Weather","Albedo","Greenhouse Effect","Global Warming","Climate Change","Deforestation",
-    "Desertification","Ocean Acidification","Glacier Retreat","Sea Level Rise","Carbon Sequestration",
-    
-    "Atmosphere","Troposphere","Stratosphere","Ozone Layer","Greenhouse Gas","CO2","Methane","Nitrous Oxide"
-  ],
-
-  earthSystems: [
-    "Soil","Soil Formation","Soil Horizon","Erosion","Deposition","Humus","Sand","Silt","Clay","Soil Texture",
-    
-    "Plate Tectonics","Convergent Boundary","Divergent Boundary","Transform Boundary","Earthquake","Volcano","Subduction",
-    
-    "Tragedy of the Commons","Maximum Sustainable Yield","Resource Management","Sustainability","Ecological Footprint",
-    "Conservation","Preservation","Restoration","Recycling","Composting"
-  ],
-
-  humanImpact: [
-    "Air Pollution","Water Pollution","Noise Pollution","Light Pollution","Smog","Acid Rain","Eutrophication",
-    "Biomagnification","Bioaccumulation","Turbidity","pH","Dissolved Oxygen",
-    
-    "Agriculture","Industrial Agriculture","Monoculture","Crop Rotation","Irrigation","Soil Degradation",
-    "Pesticide","Fertilizer","Herbicide","Pesticide Resistance","Integrated Pest Management",
-    
-    "Mining","Overfishing","Bycatch","Habitat Fragmentation","Edge Effect","Urban Sprawl",
-    
-    "Fossil Fuel","Renewable Energy"
-  ]
-},
-
-"Robotics": {
-
-  mechanics: [
-    "servo","motor","claw","battery","wombat","botball","light sensor","touch sensor","Vishwa","3D modeling", "gears", "wheels",
-	"gear ratio", "torque", "port#"
-  ],
-
-	coding:[
-		"python", "for loop", "while loop", "print", "line follow", "function", "if statement", "kipr libary","set_servo_position()","motor(x)","msleep(t)","Pseudocode",
-		"variable", "boolean", "debug"
-	]
-},
-
-"AP Classes": {
-  class: [
-    "AP Calculus AB",
-    "AP Calculus BC",
-    "AP Statistics",
-    "AP Computer Science A",
-    "AP Computer Science Principles",
-    "AP Biology",
-    "AP Chemistry",
-    "AP Physics 1",
-    "AP Physics 2",
-    "AP Physics C Mechanics",
-    "AP Physics C Electricity & Magnetism",
-    "AP Environmental Science",
-    "AP Human Geography",
-    "AP Psychology",
-    "AP World History",
-    "AP U.S. History",
-    "AP European History",
-    "AP Government & Politics",
-    "AP Macroeconomics",
-    "AP Microeconomics",
-    "AP Spanish",
-    "AP French",
-    "AP Chinese",
-    "AP Latin",
-    "AP English Language",
-    "AP English Literature",
-    "AP Art History",
-    "AP Music Theory",
-    "AP Studio Art"
-  ],
-},
-
-"School Food": {
-
-  lunch: [
-    "Pizza","Chicken Waffles","Salad","Pasta","Burrito","Quesadilla","Rice Bowl","Grilled Cheese","Hamburger"
-  ],
-  
-  sides: [
-	"Apple Sauce","Craisins", "Milk", "Carrots"
-  ],
-  
-  brunch: [
-	"Granola Bar", "Yogurt", "Pancake", "Muffin", "Burrito", "Bagel"
-  ]
-},
-
-"Questions": {
-  question: [
-    "Most likely to become rich",
-    "Most likely to become famous",
-    "Most likely to start a business",
-    "Most likely to win a Nobel Prize",
-    "Most likely to drop out of school",
-    "Most likely to go to jail",
-    "Most likely to become a comedian",
-    "Most likely to become a teacher",
-    "Most likely to travel the world",
-    "Most likely to live alone forever",
-    "Most likely to have 10 pets",
-    "Most likely to win the lottery",
-    "Most likely to become a millionaire before 30",
-    "Most likely to start a YouTube channel",
-    "Most likely to become a pro athlete",
-    "Most likely to become a doctor",
-    "Most likely to become president",
-    "Most likely to join the military",
-    "Most likely to become a lawyer",
-    "Most likely to date a celebrity",
-    "Most likely to forget their own birthday",
-    "Most likely to forget where they live",
-    "Most likely to cry during a movie",
-    "Most likely to start a fight",
-    "Most likely to fall asleep in class",
-    "Most likely to get lost in their own neighborhood",
-    "Most likely to laugh at their own joke",
-    "Most likely to survive a zombie apocalypse",
-    "Most likely to die first in a horror movie",
-    "Most likely to crash their car",
-    "Most likely to be late to their own wedding",
-    "Most likely to have 10 kids",
-    "Most likely to become a billionaire",
-    "Most likely to donate millions to charity",
-    "Most likely to go skydiving",
-    "Most likely to get a weird tattoo",
-    "Most likely to eat something off the floor",
-    "Most likely to forget their homework",
-    "Most likely to get expelled",
-    "Most likely to get the highest GPA",
-    "Most likely to be class clown",
-    "Most likely to skip school",
-    "Most likely to live in another country",
-    "Most likely to become a model",
-    "Most likely to become an influencer",
-    "Most likely to invent something",
-    "Most likely to win a game show",
-    "Most likely to run a marathon",
-    "Most likely to become a scientist",
-    "Most likely to go bald early",
-    "Most likely to get plastic surgery",
-    "Most likely to own a yacht",
-    "Most likely to own a private jet",
-    "Most likely to own a mansion",
-    "Most likely to go bankrupt",
-    "Most likely to disappear and never return",
-	"Most likely to be the teacher's pet",
-  ]
-}
-
+  "Questions": {
+    question: ["Most likely to become rich","Most likely to become famous","Most likely to start a business","Most likely to win a Nobel Prize","Most likely to drop out of school","Most likely to go to jail","Most likely to become a comedian","Most likely to become a teacher","Most likely to travel the world","Most likely to live alone forever","Most likely to have 10 pets","Most likely to win the lottery","Most likely to become a millionaire before 30","Most likely to start a YouTube channel","Most likely to become a pro athlete","Most likely to become a doctor","Most likely to become president","Most likely to join the military","Most likely to become a lawyer","Most likely to date a celebrity","Most likely to forget their own birthday","Most likely to forget where they live","Most likely to cry during a movie","Most likely to start a fight","Most likely to fall asleep in class","Most likely to get lost in their own neighborhood","Most likely to laugh at their own joke","Most likely to survive a zombie apocalypse","Most likely to die first in a horror movie","Most likely to crash their car","Most likely to be late to their own wedding","Most likely to have 10 kids","Most likely to become a billionaire","Most likely to donate millions to charity","Most likely to go skydiving","Most likely to get a weird tattoo","Most likely to eat something off the floor","Most likely to forget their homework","Most likely to get expelled","Most likely to get the highest GPA","Most likely to be class clown","Most likely to skip school","Most likely to live in another country","Most likely to become a model","Most likely to become an influencer","Most likely to invent something","Most likely to win a game show","Most likely to run a marathon","Most likely to become a scientist","Most likely to go bald early","Most likely to get plastic surgery","Most likely to own a yacht","Most likely to own a private jet","Most likely to own a mansion","Most likely to go bankrupt","Most likely to disappear and never return","Most likely to be the teacher's pet"]
+  }
 };
 
 /* ===== LOCAL STORAGE LOAD ===== */
@@ -2503,11 +1038,17 @@ imposterSlider.value = localStorage.getItem("imposterCount") || 1;
 currentSubject = localStorage.getItem("currentSubject") || "";
 actualCustomSubject = localStorage.getItem("actualCustomSubject") || "";
 customItems = JSON.parse(localStorage.getItem("customItems")) || [];
+
+// Load toggle states
 detectiveToggle.checked = JSON.parse(localStorage.getItem("detectiveEnabled")) || false;
 jesterToggle.checked = JSON.parse(localStorage.getItem("jesterEnabled")) || false;
 assassinToggle.checked = JSON.parse(localStorage.getItem("assassinEnabled")) || false;
-pregnantToggle.checked = JSON.parse(localStorage.getItem("pregnantEnabled")) || false;
+kingToggle.checked = JSON.parse(localStorage.getItem("kingEnabled")) || false;
 cluelessToggle.checked = JSON.parse(localStorage.getItem("cluelessEnabled")) || false;
+
+// We do NOT save randomize state to local storage to force a fresh decision, or we can save it.
+// For now, let's default it to false to be safe, or user preference.
+randomizeToggle.checked = false;
 
 // Load player names from localStorage if they exist, otherwise use default
 const savedPlayerNames = JSON.parse(localStorage.getItem("playerNames"));
@@ -2515,6 +1056,16 @@ if (savedPlayerNames && Array.isArray(savedPlayerNames) && savedPlayerNames.leng
   playerNames = [...savedPlayerNames]; // Use saved names
 } else {
   playerNames = []; // Start with empty array
+}
+
+// Load Custom Subjects
+const savedSubjectsJSON = localStorage.getItem("savedCustomSubjects");
+if (savedSubjectsJSON) {
+  try {
+    savedCustomSubjects = JSON.parse(savedSubjectsJSON);
+  } catch (e) {
+    savedCustomSubjects = {};
+  }
 }
 
 /* ===== MODAL FUNCTIONS ===== */
@@ -2546,6 +1097,137 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
+/* ===== CREATE SUBJECT MODAL FUNCTIONS ===== */
+function openCreateSubjectModal() {
+  newSubjectNameInput.value = "";
+  // clear dynamic categories container
+  categoriesContainer.innerHTML = "";
+  // Add first category block by default
+  addCategoryBlock();
+  
+  createSubjectOverlay.classList.add('active');
+}
+
+function closeCreateSubjectModal() {
+  createSubjectOverlay.classList.remove('active');
+}
+
+function addCategoryBlock() {
+  const div = document.createElement("div");
+  div.className = "category-block";
+  
+  // Create Remove Button
+  const removeBtn = document.createElement("button");
+  removeBtn.className = "remove-category-btn";
+  removeBtn.innerHTML = "&times;";
+  removeBtn.title = "Remove Category";
+  removeBtn.onclick = function() {
+    // Only allow removal if more than 1 category remains
+    if (categoriesContainer.children.length > 1) {
+      div.remove();
+    } else {
+      alert("Subject must have at least one category.");
+    }
+  };
+  
+  // HTML Structure for Category Name + Words
+  div.innerHTML = `
+    <div class="form-group" style="margin-bottom: 12px;">
+      <label class="form-label">Category Name</label>
+      <input type="text" class="form-input cat-name-input" placeholder="e.g. Troops, Spells...">
+    </div>
+    <div class="form-group" style="margin-bottom: 0;">
+      <label class="form-label">Words List</label>
+      <textarea class="form-textarea words-textarea" placeholder="Enter words separated by commas or new lines."></textarea>
+      <div class="form-hint">At least 2 words required.</div>
+    </div>
+  `;
+  
+  div.appendChild(removeBtn);
+  categoriesContainer.appendChild(div);
+}
+
+function saveNewSubject() {
+  const name = newSubjectNameInput.value.trim();
+  
+  if (!name) {
+    alert("Please enter a subject name.");
+    return;
+  }
+  
+  const subjectData = {};
+  const categoryBlocks = categoriesContainer.querySelectorAll(".category-block");
+  let hasValidData = false;
+  
+  // Loop through each category block to build the data
+  for (let block of categoryBlocks) {
+    const catName = block.querySelector(".cat-name-input").value.trim();
+    const wordsRaw = block.querySelector(".words-textarea").value;
+    
+    // Validation
+    if (!catName) {
+      alert("All categories must have a name.");
+      return;
+    }
+    
+    // Words parsing
+    const words = wordsRaw.split(/[\n,]+/).map(w => w.trim()).filter(w => w.length > 0);
+    
+    if (words.length < 2) {
+      alert(`Category "${catName}" must have at least 2 words.`);
+      return;
+    }
+    
+    subjectData[catName] = words;
+    hasValidData = true;
+  }
+  
+  if (!hasValidData) return;
+  
+  if (defaultSubjects[name] || savedCustomSubjects[name]) {
+    if (!confirm(`Subject "${name}" already exists. Overwrite?`)) {
+      return;
+    }
+  }
+  
+  // Save structure: { "SubjectName": { "Cat1": [words], "Cat2": [words] } }
+  savedCustomSubjects[name] = subjectData;
+  
+  localStorage.setItem("savedCustomSubjects", JSON.stringify(savedCustomSubjects));
+  
+  closeCreateSubjectModal();
+  initializeSubjectOptions(); // Re-render list
+  
+  // Select the new subject automatically
+  selectSubject(name);
+}
+
+function deleteCustomSubject(e, subjectName) {
+  e.stopPropagation(); // Prevent selecting the subject when clicking delete
+  if (confirm(`Are you sure you want to delete "${subjectName}"?`)) {
+    delete savedCustomSubjects[subjectName];
+    localStorage.setItem("savedCustomSubjects", JSON.stringify(savedCustomSubjects));
+    
+    // If the deleted subject was selected, clear selection
+    if (currentSubject === subjectName) {
+      changeSubject();
+    }
+    
+    initializeSubjectOptions();
+  }
+}
+
+// Create Modal Listeners
+closeCreateSubjectBtn.addEventListener('click', closeCreateSubjectModal);
+cancelCreateSubjectBtn.addEventListener('click', closeCreateSubjectModal);
+saveSubjectBtn.addEventListener('click', saveNewSubject);
+addCategoryBtn.addEventListener('click', addCategoryBlock);
+
+createSubjectOverlay.addEventListener('click', (e) => {
+  if (e.target === createSubjectOverlay) closeCreateSubjectModal();
+});
+
+
 /* ===== UPDATE SLIDER DISPLAY ===== */
 function updateSliderDisplays() {
   playersValue.textContent = playerSlider.value;
@@ -2567,10 +1249,25 @@ imposterSlider.addEventListener('change', updateSliderDisplays);
 function initializeSubjectOptions() {
   subjectOptions.innerHTML = "";
   
-  // Get all subject names and sort them alphabetically
-  const sortedSubjectNames = Object.keys(defaultSubjects).sort();
+  // 1. Add "Create New" Button
+  const createBtn = document.createElement("div");
+  createBtn.className = "subject-option add-new";
+  createBtn.innerHTML = "<span>+</span> Create New";
+  createBtn.addEventListener("click", openCreateSubjectModal);
+  subjectOptions.appendChild(createBtn);
   
-  sortedSubjectNames.forEach(subject => {
+  // 2. Combine and Sort all subjects (Default + Saved)
+  const allKeys = [
+    ...Object.keys(defaultSubjects),
+    ...Object.keys(savedCustomSubjects)
+  ].sort();
+  
+  // Remove duplicates (if any name collision, though we check on save)
+  const uniqueKeys = [...new Set(allKeys)];
+  
+  uniqueKeys.forEach(subject => {
+    const isCustom = savedCustomSubjects.hasOwnProperty(subject);
+    
     const option = document.createElement("div");
     option.className = "subject-option";
     option.textContent = subject;
@@ -2580,7 +1277,19 @@ function initializeSubjectOptions() {
       option.classList.add("selected");
     }
     
+    // Click to select
     option.addEventListener("click", () => selectSubject(subject));
+    
+    // Add delete button if custom
+    if (isCustom) {
+      const deleteBtn = document.createElement("div");
+      deleteBtn.className = "delete-subject-btn";
+      deleteBtn.innerHTML = "&times;";
+      deleteBtn.title = "Delete Subject";
+      deleteBtn.addEventListener("click", (e) => deleteCustomSubject(e, subject));
+      option.appendChild(deleteBtn);
+    }
+    
     subjectOptions.appendChild(option);
   });
 }
@@ -2599,11 +1308,14 @@ function selectSubject(subject) {
   }
   
   currentSubject = subject;
-  actualCustomSubject = ""; // Clear custom subject when selecting a default one
+  actualCustomSubject = ""; // Clear single-use custom subject
   
-  // For default subjects, combine all items from all categories
+  // Determine source (Default or Custom)
+  const sourceObject = defaultSubjects[subject] ? defaultSubjects : savedCustomSubjects;
+  
+  // Combine all items
   customItems = [];
-  Object.values(defaultSubjects[subject]).forEach(categoryItems => {
+  Object.values(sourceObject[subject]).forEach(categoryItems => {
     customItems.push(...categoryItems);
   });
   
@@ -2615,7 +1327,7 @@ function selectSubject(subject) {
   enableGenerateButton();
   errorBox.textContent = "";
   
-  // Clear custom input
+  // Clear input
   customSubjectInput.value = "";
 }
 
@@ -2671,8 +1383,8 @@ function changeSubject() {
   revealRolesBtn.style.display = 'none';
   rolesRevealBox.classList.remove('show');
   rolesRevealBox.innerHTML = '';
-  pregnantAnnouncement.classList.remove('show');
-  pregnantAnnouncement.textContent = '';
+  kingAnnouncement.classList.remove('show');
+  kingAnnouncement.textContent = '';
 }
 
 function enableGenerateButton() {
@@ -2808,8 +1520,8 @@ function updateTracker() {
   revealTracker.textContent = `Revealed: ${revealedCards} / ${totalCards} cards`;
   
   if (lockedCards === totalCards && totalCards > 0) {
-    // Announce pregnant player after all cards are locked
-    announcePregnantPlayer();
+    // Announce king player after all cards are locked
+    announceKingPlayer();
     // Then select first player
     setTimeout(() => {
       selectFirstPlayer();
@@ -2817,15 +1529,19 @@ function updateTracker() {
   }
 }
 
-/* ===== ANNOUNCE PREGNANT PLAYER ===== */
-function announcePregnantPlayer() {
-  if (pregnantToggle.checked && pregnantPlayer !== null) {
-    const playerName = playerNames[pregnantPlayer] || `Player ${pregnantPlayer + 1}`;
+/* ===== ANNOUNCE KING PLAYER ===== */
+function announceKingPlayer() {
+  // Check the global flags (set during generation) instead of current toggle state
+  // because randomizer might have enabled it internally for this round
+  const isKingActive = words.some((_, i) => i === kingPlayer);
+  
+  if (kingPlayer !== null) {
+    const playerName = playerNames[kingPlayer] || `Player ${kingPlayer + 1}`;
     
     setTimeout(() => {
-      pregnantAnnouncement.textContent = `${playerName} is Pregnant!\nThey get 2 votes!`;
-      pregnantAnnouncement.classList.add('show');
-      pregnantAnnouncement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      kingAnnouncement.textContent = `${playerName} is the King!\nThey get 2 votes!`;
+      kingAnnouncement.classList.add('show');
+      kingAnnouncement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }, 500);
   }
 }
@@ -2839,27 +1555,7 @@ function selectFirstPlayer() {
     const playerName = playerNames[randomPlayer - 1] || `Player ${randomPlayer}`;
     let firstPlayerText = `${playerName} goes first!`;
     
-    // Add role status
-    const roleNotes = [];
-    if (detectiveToggle.checked) {
-      roleNotes.push("Detective");
-    }
-    if (jesterToggle.checked) {
-      roleNotes.push("Jester");
-    }
-    if (assassinToggle.checked) {
-      roleNotes.push("Assassin");
-    }
-    if (pregnantToggle.checked) {
-      roleNotes.push("Pregnant");
-    }
-    if (cluelessToggle.checked) {
-      roleNotes.push("Clueless");
-    }
-    
-    if (roleNotes.length > 0) {
-      firstPlayerText += `\n(${roleNotes.join(" & ")} in play)`;
-    }
+    // Role announcement removed per user request.
     
     firstPlayerBox.textContent = firstPlayerText;
     firstPlayerBox.classList.add('show');
@@ -2887,7 +1583,7 @@ function revealAllRoles() {
     let roleName = "";
     let roleClass = "";
     let specialNote = "";
-    let isPregnant = (i === pregnantPlayer);
+    let isKing = (i === kingPlayer);
     
     if (word === secretItem) {
       roleName = "Civilian";
@@ -2915,11 +1611,11 @@ function revealAllRoles() {
       }
     }
     
-    if (isPregnant) {
+    if (isKing) {
       if (roleClass) {
-        roleClass += " pregnant-role";
+        roleClass += " king-role";
       } else {
-        roleClass = "pregnant-role";
+        roleClass = "king-role";
       }
     }
     
@@ -2928,9 +1624,9 @@ function revealAllRoles() {
       <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
         <span class="player-number">${playerName}</span>
         <div style="flex: 1; display: flex; flex-direction: column; align-items: flex-end;">
-          <span class="role-name ${roleClass}">${roleName}${isPregnant ? ' (Pregnant)' : ''}</span>
+          <span class="role-name ${roleClass}">${roleName}${isKing ? ' (King)' : ''}</span>
           ${specialNote}
-          ${isPregnant ? '<div class="pregnant-badge">Has 2 votes!</div>' : ''}
+          ${isKing ? '<div class="king-badge">Has 2 votes!</div>' : ''}
         </div>
       </div>
     `;
@@ -2964,7 +1660,7 @@ function generateCards() {
   revealedCards = 0;
   lockedCards = 0;
   playerNumbers = [];
-  isDetectiveChoosing = false; // Reset detective state
+  isDetectiveChoosing = false; 
   activeDetectiveCardElement = null;
   document.body.classList.remove('detective-mode');
 
@@ -2973,10 +1669,10 @@ function generateCards() {
   revealRolesBtn.style.display = 'none';
   rolesRevealBox.classList.remove('show');
   rolesRevealBox.innerHTML = '';
-  pregnantAnnouncement.classList.remove('show');
-  pregnantAnnouncement.textContent = '';
+  kingAnnouncement.classList.remove('show');
+  kingAnnouncement.textContent = '';
   errorBox.textContent = "";
-  pregnantPlayer = null;
+  kingPlayer = null;
   cluelessWord = "";
 
   const playerCount = parseInt(playerSlider.value, 10);
@@ -2997,30 +1693,39 @@ function generateCards() {
     return;
   }
 
-  // Check role slots
-  const civilianSlots = playerCount - imposterCount;
-  let specialRolesCount = 0;
-  if (detectiveToggle.checked) specialRolesCount++;
-  if (jesterToggle.checked) specialRolesCount++;
-  if (assassinToggle.checked) specialRolesCount++;
-  if (cluelessToggle.checked) specialRolesCount++;
-  const pregnantEnabled = pregnantToggle.checked;
-  
-  if (civilianSlots < specialRolesCount + 1) { 
-    errorBox.textContent = `Need at least ${specialRolesCount + 1} non-imposters for special roles.`;
-    return;
-  }
-
   // Save settings
   localStorage.setItem("playerCount", playerCount);
   localStorage.setItem("imposterCount", imposterCount);
 
   // Logic setup (Word/Category selection)
   secretItem = getRandomItemFromArray(customItems);
+  
+  // Determine Category Display
   secretCategory = "Common";
   let categoryItems = [];
 
-  if (defaultSubjects[currentSubject]) {
+  // Check saved custom subjects first
+  if (savedCustomSubjects[currentSubject]) {
+    // The subject object looks like { "Category1": [words], "Category2": [words] }
+    // We need to find which category the secretItem belongs to
+    let found = false;
+    for (const [category, items] of Object.entries(savedCustomSubjects[currentSubject])) {
+      if (items.includes(secretItem)) {
+        secretCategory = category;
+        categoryItems = items;
+        found = true;
+        break;
+      }
+    }
+    // Fallback if random selection logic had a hiccup (shouldn't happen)
+    if (!found) {
+       const firstKey = Object.keys(savedCustomSubjects[currentSubject])[0];
+       secretCategory = firstKey || "Custom List";
+       categoryItems = savedCustomSubjects[currentSubject][firstKey] || customItems;
+    }
+  } 
+  // Then check default subjects
+  else if (defaultSubjects[currentSubject]) {
     for (const [category, items] of Object.entries(defaultSubjects[currentSubject])) {
       if (items.includes(secretItem)) {
         secretCategory = category;
@@ -3028,14 +1733,94 @@ function generateCards() {
         break;
       }
     }
-  } else {
+  } 
+  // Single use custom word
+  else {
     secretCategory = "Custom";
     categoryItems = customItems;
   }
 
-  if (cluelessToggle.checked && categoryItems.length < 2) {
-      errorBox.textContent = "Clueless role disabled: Not enough words in this category.";
-      return;
+  // Determine active roles
+  let useDetective = detectiveToggle.checked;
+  let useJester = jesterToggle.checked;
+  let useAssassin = assassinToggle.checked;
+  let useClueless = cluelessToggle.checked;
+  let useKing = kingToggle.checked;
+
+  // RANDOMIZE LOGIC
+  if (randomizeToggle.checked) {
+      // 1. Reset all
+      useDetective = false;
+      useJester = false;
+      useAssassin = false;
+      useClueless = false;
+      useKing = false;
+
+      // 2. Calculate available slots for civilian roles
+      // We generally want to leave at least 1 "plain" civilian in play.
+      const civilianSlots = playerCount - imposterCount;
+      // If 3 players (1 imp), civilianSlots = 2. Max roles = 1.
+      // If 4 players (1 imp), civilianSlots = 3. Max roles = 2.
+      // If 5 players (1 imp), civilianSlots = 4. Max roles = 3.
+      
+      let maxSpecialRoles = Math.max(0, civilianSlots - 1);
+      
+      // Determine random count between 0 and maxSpecialRoles
+      // (If maxSpecialRoles is 0, count is 0)
+      let targetRoleCount = 0;
+      if (maxSpecialRoles > 0) {
+        // Random number between 0 and maxSpecialRoles inclusive
+        // Changed to allow 0 roles (0 to max)
+        targetRoleCount = Math.floor(Math.random() * (maxSpecialRoles + 1));
+      }
+
+      // 3. Define pool of roles that consume a slot
+      let rolePool = ['detective', 'jester', 'assassin'];
+      
+      // Only add clueless if valid (enough words)
+      if (categoryItems.length >= 2) {
+          rolePool.push('clueless');
+      }
+
+      // Shuffle role pool
+      for (let i = rolePool.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [rolePool[i], rolePool[j]] = [rolePool[j], rolePool[i]];
+      }
+
+      // Enable the first N roles from the shuffled pool
+      for (let i = 0; i < targetRoleCount; i++) {
+         if (i < rolePool.length) {
+             const role = rolePool[i];
+             if (role === 'detective') useDetective = true;
+             if (role === 'jester') useJester = true;
+             if (role === 'assassin') useAssassin = true;
+             if (role === 'clueless') useClueless = true;
+         }
+      }
+
+      // 4. Handle King (doesn't take a slot, stackable)
+      // Give it a 50% chance to appear
+      useKing = Math.random() < 0.5;
+
+  } else {
+      // Manual mode validation
+      const civilianSlots = playerCount - imposterCount;
+      let specialRolesCount = 0;
+      if (useDetective) specialRolesCount++;
+      if (useJester) specialRolesCount++;
+      if (useAssassin) specialRolesCount++;
+      if (useClueless) specialRolesCount++;
+      
+      if (civilianSlots < specialRolesCount + 1) { 
+        errorBox.textContent = `Need at least ${specialRolesCount + 1} non-imposters for special roles.`;
+        return;
+      }
+      
+      if (useClueless && categoryItems.length < 2) {
+          errorBox.textContent = "Clueless role disabled: Not enough words in this category.";
+          return;
+      }
   }
 
   // --- ROLE ASSIGNMENT LOGIC ---
@@ -3053,7 +1838,7 @@ function generateCards() {
 
   // Detective
   let detectiveIndex = null;
-  if (detectiveToggle.checked) {
+  if (useDetective) {
     let assigned = false;
     while (!assigned) {
       const idx = Math.floor(Math.random() * playerCount);
@@ -3066,7 +1851,7 @@ function generateCards() {
   }
 
   // Jester
-  if (jesterToggle.checked) {
+  if (useJester) {
     let assigned = false;
     while (!assigned) {
       const idx = Math.floor(Math.random() * playerCount);
@@ -3078,7 +1863,7 @@ function generateCards() {
   }
 
   // Clueless
-  if (cluelessToggle.checked) {
+  if (useClueless) {
     let assigned = false;
     while (!assigned) {
       const idx = Math.floor(Math.random() * playerCount);
@@ -3094,7 +1879,7 @@ function generateCards() {
   // Assassin
   let assassinIndex = null;
   assassinTarget = null;
-  if (assassinToggle.checked) {
+  if (useAssassin) {
     let assigned = false;
     while (!assigned) {
       const idx = Math.floor(Math.random() * playerCount);
@@ -3118,9 +1903,9 @@ function generateCards() {
     }
   }
 
-  // Pregnant
-  if (pregnantEnabled) {
-    pregnantPlayer = Math.floor(Math.random() * playerCount);
+  // King
+  if (useKing) {
+    kingPlayer = Math.floor(Math.random() * playerCount);
   }
 
   // Fill Civilians
@@ -3139,8 +1924,8 @@ function generateCards() {
   const shuffledWords = indices.map(i => words[i]);
   words = shuffledWords;
 
-  // Re-map Assassin Target & Pregnant
-  if (assassinToggle.checked && assassinIndex !== null && assassinTarget !== null) {
+  // Re-map Assassin Target & King
+  if (useAssassin && assassinIndex !== null && assassinTarget !== null) {
     let newAssassinIndex = null;
     for (let i = 0; i < indices.length; i++) {
       if (indices[i] === assassinIndex) { newAssassinIndex = i; break; }
@@ -3164,12 +1949,12 @@ function generateCards() {
     }
   }
   
-  if (pregnantEnabled && pregnantPlayer !== null) {
-    let newPregnantIndex = null;
+  if (useKing && kingPlayer !== null) {
+    let newKingIndex = null;
     for (let i = 0; i < indices.length; i++) {
-      if (indices[i] === pregnantPlayer) { newPregnantIndex = i; break; }
+      if (indices[i] === kingPlayer) { newKingIndex = i; break; }
     }
-    pregnantPlayer = newPregnantIndex;
+    kingPlayer = newKingIndex;
   }
 
   // --- CARD GENERATION ---
@@ -3280,11 +2065,11 @@ function generateCards() {
           wordBox.textContent = word; 
         }
         
-        if (pregnantPlayer === i) {
-          const pregnantText = document.createElement("div");
-          pregnantText.className = "pregnant-role";
-          pregnantText.textContent = "Pregnant";
-          wordBox.appendChild(pregnantText);
+        if (kingPlayer === i) {
+          const kingText = document.createElement("div");
+          kingText.className = "king-role";
+          kingText.textContent = "King";
+          wordBox.appendChild(kingText);
         }
         
         wordBox.classList.add("word-revealed");
@@ -3315,12 +2100,12 @@ function generateCards() {
           specialHint.innerHTML = `<strong>Your Mission:</strong><br>Get voted out!`;
         }
         
-        if (pregnantPlayer === i) {
-          const pregnantHint = document.createElement("div");
-          pregnantHint.className = "pregnant-hint";
-          pregnantHint.innerHTML = `<strong>You're Pregnant!</strong><br>You get 2 votes!`;
-          card.appendChild(pregnantHint);
-          setTimeout(() => pregnantHint.classList.add('show'), 10);
+        if (kingPlayer === i) {
+          const kingHint = document.createElement("div");
+          kingHint.className = "king-hint";
+          kingHint.innerHTML = `<strong>You are the King!</strong><br>You get 2 votes!`;
+          card.appendChild(kingHint);
+          setTimeout(() => kingHint.classList.add('show'), 10);
         }
 
         if (specialHint.textContent) {
@@ -3351,15 +2136,15 @@ function generateCards() {
         }
 
         if (specialHint) specialHint.classList.remove('show');
-        const pregnantHint = card.querySelector('.pregnant-hint');
-        if (pregnantHint) pregnantHint.classList.remove('show');
+        const kingHint = card.querySelector('.king-hint');
+        if (kingHint) kingHint.classList.remove('show');
 
         wordBox.classList.remove("word-revealed");
         categoryBox.classList.remove("category-shown");
 
         setTimeout(() => {
           if (specialHint && specialHint.parentNode) specialHint.parentNode.removeChild(specialHint);
-          if (pregnantHint && pregnantHint.parentNode) pregnantHint.parentNode.removeChild(pregnantHint);
+          if (kingHint && kingHint.parentNode) kingHint.parentNode.removeChild(kingHint);
           
           while (wordBox.firstChild) wordBox.removeChild(wordBox.firstChild);
           
@@ -3379,6 +2164,27 @@ function generateCards() {
     cardsContainer.appendChild(card);
   });
 }
+
+/* ===== TOGGLE RANDOMIZE CHECKBOXES ===== */
+randomizeToggle.addEventListener('change', () => {
+  const isDisabled = randomizeToggle.checked;
+  
+  detectiveToggle.disabled = isDisabled;
+  jesterToggle.disabled = isDisabled;
+  assassinToggle.disabled = isDisabled;
+  kingToggle.disabled = isDisabled;
+  cluelessToggle.disabled = isDisabled;
+
+  // Visual Styling
+  const containers = [detectiveContainer, jesterContainer, assassinContainer, kingContainer, cluelessContainer];
+  containers.forEach(container => {
+    if (isDisabled) {
+      container.classList.add('disabled');
+    } else {
+      container.classList.remove('disabled');
+    }
+  });
+});
 
 /* ===== EVENT LISTENERS ===== */
 customSubjectBtn.addEventListener("click", useCustomSubject);
@@ -3440,8 +2246,8 @@ assassinToggle.addEventListener("change", () => {
   localStorage.setItem("assassinEnabled", assassinToggle.checked);
 });
 
-pregnantToggle.addEventListener("change", () => {
-  localStorage.setItem("pregnantEnabled", pregnantToggle.checked);
+kingToggle.addEventListener("change", () => {
+  localStorage.setItem("kingEnabled", kingToggle.checked);
 });
 
 cluelessToggle.addEventListener("change", () => {
