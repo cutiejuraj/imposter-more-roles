@@ -189,7 +189,27 @@
     @media (max-width: 600px) { .cards { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; } }
     @media (max-width: 400px) { .cards { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; } }
     @media (max-width: 350px) { .cards { grid-template-columns: 1fr; max-width: 280px; } }
-    .card { background: #fff; border-radius: 14px; padding: 14px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 8px; user-select: none; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; width: 100%; max-width: 200px; }
+    
+    /* UPDATED: Card styles to prevent copying */
+    .card { 
+      background: #fff; 
+      border-radius: 14px; 
+      padding: 14px; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+      display: flex; 
+      flex-direction: column; 
+      gap: 8px; 
+      user-select: none; 
+      -webkit-user-select: none; 
+      -moz-user-select: none; 
+      -ms-user-select: none; 
+      -webkit-touch-callout: none; /* iOS Safari touch callout disable */
+      overflow: hidden; 
+      transition: transform 0.2s, box-shadow 0.2s; 
+      width: 100%; 
+      max-width: 200px; 
+    }
+    
     @media (max-width: 600px) { .card { max-width: 180px; } }
     @media (max-width: 400px) { .card { max-width: 160px; padding: 12px; } }
     @media (max-width: 350px) { .card { max-width: 100%; } }
@@ -197,7 +217,7 @@
     .card-header { display: flex; justify-content: space-between; align-items: center; font-size: clamp(14px, 3vw, 16px); font-weight: 700; }
     .status-label { font-size: 11px; text-transform: uppercase; color: #777; font-weight: 600; letter-spacing: 0.5px; transition: color 0.15s; }
     
-    .word-box { padding: 16px 10px; border-radius: 12px; border: 1px dashed #bbb; text-align: center; font-size: clamp(16px, 4vw, 20px); font-weight: 800; opacity: 0; transform: scale(0.9); transition: opacity 0.25s, transform 0.25s; min-height: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; word-break: break-word; overflow-wrap: break-word; width: 100%; user-select: none; }
+    .word-box { padding: 16px 10px; border-radius: 12px; border: 1px dashed #bbb; text-align: center; font-size: clamp(16px, 4vw, 20px); font-weight: 800; opacity: 0; transform: scale(0.9); transition: opacity 0.25s, transform 0.25s; min-height: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; word-break: break-word; overflow-wrap: break-word; width: 100%; user-select: none; -webkit-user-select: none; }
     @media (max-width: 400px) { .word-box { min-height: 54px; padding: 12px 8px; } }
     .word-hidden { color: #777; }
     .word-revealed { color: #111; opacity: 1; transform: scale(1); }
@@ -1767,6 +1787,18 @@ function generateCards() {
     const card = document.createElement("div");
     card.className = "card";
     card.dataset.index = i; // Store index for detective logic
+
+    // Prevent context menu (right click) on the card
+    card.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      return false;
+    });
+
+    // Prevent copy on the card
+    card.addEventListener('copy', (e) => {
+      e.preventDefault();
+      return false;
+    });
 
     card.innerHTML = `
       <div class="card-header">
